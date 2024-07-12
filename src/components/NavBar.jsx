@@ -5,7 +5,7 @@ export const NavBar = () => {
     <>
       <nav className="navbar navbar-expand-lg bg-body-tertiary">
         <div className="container-fluid">
-          <NavLink to='/' className="navbar-brand" href="#"> Store </NavLink>
+          <NavLink to='/' className="navbar-brand" href="#"> Logo </NavLink>
           <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
             aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span className="navbar-toggler-icon"></span>
@@ -13,22 +13,19 @@ export const NavBar = () => {
           <div className="collapse navbar-collapse" id="navbarSupportedContent">
             <ul className="navbar-nav me-auto mb-2 mb-lg-0">
               <li className="nav-item">
-                <NavLink to='/' className="nav-link active">Compras</NavLink>
+                <NavLink to='/music' className="nav-link active">Music</NavLink>
               </li>
               <li className="nav-item">
-                <NavLink to='/' className="nav-link active" > Home </NavLink>
+                <NavLink to='/podcast' className="nav-link active" > Podcast </NavLink>
               </li>
               <li className="nav-item">
-                <NavLink to='/about' className="nav-link" > About </NavLink>
+                <NavLink to='/live' className="nav-link" > Live </NavLink>
               </li>
               <li className="nav-item">
-                <NavLink to='/contact' className="nav-link" > Contact </NavLink>
-              </li>
-              <li className="nav-item">
-                <NavLink to='/login' className="nav-link" > Login </NavLink>
+                <NavLink to='/radio' className="nav-link" > Radio </NavLink>
               </li>
             </ul>
-            <NavLink to='/Login'>
+            <NavLink to='/login'>
                 <p>Login</p>
             </NavLink>
           </div>

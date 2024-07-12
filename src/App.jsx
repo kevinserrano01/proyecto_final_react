@@ -9,6 +9,10 @@ import { Genres } from './routes/Genres'
 import { Music } from './routes/Music'
 import { PlayList } from './routes/PlayList'
 import { Podcast } from './routes/Podcast'
+import { Live } from './routes/Live'
+import { Radio } from './routes/Radio'
+import { Login } from './routes/Login'
+import { SideBar } from './components/SideBar';
 
 
 
@@ -16,7 +20,8 @@ export const App = () => {
   return (
     <>
       <NavBar></NavBar>
-      <h1>Kev</h1>
+
+      {/* <SideBar></SideBar> */}
 
       <Routes>
           <Route path="/" element={ <HomeScreen></HomeScreen> }></Route>
@@ -28,6 +33,9 @@ export const App = () => {
           <Route path="/Music" element={ <Music></Music> }></Route>
           <Route path="/PlayList" element={ <PlayList></PlayList> }></Route>
           <Route path="/Podcast" element={ <Podcast></Podcast> }></Route>
+          <Route path="/Live" element={ <Live></Live> }></Route>
+          <Route path="/Radio" element={ <Radio></Radio> }></Route>
+          <Route path="/Login" element={ <Login></Login> }></Route>
           {/* Ruta por defecto si ponemos cualquier cosa despues de la barra nos lleva al home. */}
           <Route path="/*" element={<Navigate to="/" />}></Route>
         </Routes>
