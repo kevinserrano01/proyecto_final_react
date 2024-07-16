@@ -1,6 +1,7 @@
 import { Navigate, Route, Routes } from "react-router-dom"
 import { NavBar } from "./components/NavBar"
-import { HomeScreen } from "./routes/HomeScreen"
+import { SideBar } from './components/SideBar';
+import { MainContent } from "./components/MainContent";
 import { Albums } from './routes/Albums'
 import { Artist } from './routes/Artist'
 import { Explore } from './routes/Explore'
@@ -12,33 +13,41 @@ import { Podcast } from './routes/Podcast'
 import { Live } from './routes/Live'
 import { Radio } from './routes/Radio'
 import { Login } from './routes/Login'
-import { SideBar } from './components/SideBar';
+import './styles/App.css'
+
 
 
 
 export const App = () => {
   return (
     <>
-      <NavBar></NavBar>
+      <div className="App">
+        <NavBar/>
+        <div className="d-flex">
+          <SideBar />
+          <div className="main-content">
+            <Routes>
+              <Route path="/" element={ <MainContent></MainContent> } />
+              <Route path="/Albums" element={ <Albums></Albums> } />
+              <Route path="/Artist" element={ <Artist></Artist> } />
+              <Route path="/Explore" element={ <Explore></Explore> } />
+              <Route path="/Favorites" element={ <Favorites></Favorites> } />
+              <Route path="/Genres" element={ <Genres></Genres> } />
+              <Route path="/Music" element={ <Music></Music> } />
+              <Route path="/PlayList" element={ <PlayList></PlayList> } />
+              <Route path="/Podcast" element={ <Podcast></Podcast> } />
+              <Route path="/Live" element={ <Live></Live> } />
+              <Route path="/Radio" element={ <Radio></Radio> } />
+              <Route path="/Login" element={ <Login></Login> } />
+              {/* Ruta por defecto si ponemos cualquier cosa despues de la barra nos lleva al home. */}
+              <Route path="/*" element={<Navigate to="/" />} />
+            </Routes>
+          </div>
+          
+        </div>
+      </div>
 
-      {/* <SideBar></SideBar> */}
-
-      <Routes>
-          <Route path="/" element={ <HomeScreen></HomeScreen> }></Route>
-          <Route path="/Albums" element={ <Albums></Albums> }></Route>
-          <Route path="/Artist" element={ <Artist></Artist> }></Route>
-          <Route path="/Explore" element={ <Explore></Explore> }></Route>
-          <Route path="/Favorites" element={ <Favorites></Favorites> }></Route>
-          <Route path="/Genres" element={ <Genres></Genres> }></Route>
-          <Route path="/Music" element={ <Music></Music> }></Route>
-          <Route path="/PlayList" element={ <PlayList></PlayList> }></Route>
-          <Route path="/Podcast" element={ <Podcast></Podcast> }></Route>
-          <Route path="/Live" element={ <Live></Live> }></Route>
-          <Route path="/Radio" element={ <Radio></Radio> }></Route>
-          <Route path="/Login" element={ <Login></Login> }></Route>
-          {/* Ruta por defecto si ponemos cualquier cosa despues de la barra nos lleva al home. */}
-          <Route path="/*" element={<Navigate to="/" />}></Route>
-        </Routes>
+      
     </>
   )
 }
