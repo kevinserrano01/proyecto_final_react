@@ -23,7 +23,7 @@ export const App = () => {
     <>
       <div className="App">
         <NavBar/>
-        <div className="d-flex">
+        <div className="d-flex flex-column">
           <SideBar />
           <div className="main-content">
             <Routes>
