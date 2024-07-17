@@ -15,9 +15,6 @@ import { Radio } from './routes/Radio'
 import { Login } from './routes/Login'
 import './styles/App.css'
 
-
-
-
 export const App = () => {
   return (
     <>

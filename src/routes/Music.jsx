@@ -16,14 +16,16 @@ export const Music = () => {
       <hr />
       {isLoading ? <h4>Cargando...</h4>
       : errors ? <p>Ha ocurriido un error</p> 
-      : <div>
-        {data.map(song => {
+      : <div className="container">
+          <div className="row">
+            {data.map(song => {
               return (
-                <div key={song.id}>
-                  <CardMusic title={song.title} author={song.owner} duration={song.duration}/>
+                <div key={song.id} className="col-md-4 mb-3">
+                  <CardMusic title={song.title} author={song.owner} duration={song.duration} />
                 </div>
               )
             })}
+          </div>
         </div>
       } 
     </>
