@@ -1,21 +1,16 @@
 import '../styles/CardMusic.css'
-import PlayCircleIcon from '@mui/icons-material/PlayCircle';
 
-
-export const CardMusic = ({title, author}) => {
+export const CardMusic = ({ song }) => {
     return (
-        <div id='cardMusic' className="card mb-3">
-            <div className="row g-0">
-                <div className="col-md-4">
-                    <img src="src/assets/images/musicLogo.jpg" className="img-fluid rounded-start" alt="..." />
-                </div>
-                <div className="col-md-8">
-                    <div className="card-body">
-                        <p className="card-title">{ title }</p>
-                        <p className="card-text">{ author }</p>
-                        {/* <p className="card-text">{duration}</p> */}
-                        <button type="button" className="btn btn-success"> <PlayCircleIcon></PlayCircleIcon> </button>
-                    </div>
+        <div className="card">
+        <img src="src/assets/images/musicLogo.jpg" className="card-img-top" alt="logo music" />
+            <div className="card-body">
+                <h5 className="card-title"> { song.title } </h5>
+                <p className="card-text">{ song.owner }</p>
+                <div className="audio-player">
+                    <audio controls>
+                         <source src={song.song_file} type="audio/mpeg" /> Tu navegador no soporta el elemento de audio.
+                     </audio>
                 </div>
             </div>
         </div>
