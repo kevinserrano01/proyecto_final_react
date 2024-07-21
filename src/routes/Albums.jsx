@@ -5,13 +5,12 @@ import { CardAlbum } from '../components/CardAlbum'
 export const Albums = () => {
   const { data, isLoading, errors } = useFetch('https://sandbox.academiadevelopers.com/harmonyhub/albums/')
   
+  if (isLoading) return <h2>Cargando...</h2>;
+  if (errors) return <h2>Error al cargar los albunes.</h2>;
+  if (data.length <= 0) return <h2>No hay albunes disponibles</h2>;
+
   return (
-    <>
-      <h1>Albums</h1>
-      <hr />
-      {isLoading ? <h4>Cargando...</h4>
-      : errors ? <p>Ha ocurriido un error</p>
-      : <div className="container">
+        <div className="container">
           <div className="row">
             {data.map(album => {
               return (
@@ -22,7 +21,5 @@ export const Albums = () => {
             })}
           </div>
         </div>
-      } 
-    </>
   )
 }

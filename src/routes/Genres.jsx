@@ -7,7 +7,7 @@ export const Genres = () => {
 
   if (isLoading) return <h2>Cargando...</h2>;
   if (errors) return <h2>Error al cargar los generos.</h2>;
-  if (data) return <h2>No hay generos disponibles</h2>;
+  if (data.length <= 0) return <h2>No hay generos disponibles</h2>;
   
   return (
         <div className="container">
