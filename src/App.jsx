@@ -4,7 +4,7 @@ import { SideBar } from './components/SideBar';
 import { MainContent } from "./components/MainContent";
 import { Albums } from './routes/Albums'
 import { Artist } from './routes/Artist'
-import { Explore } from './routes/Explore'
+import { Song } from './routes/Song'
 import { Favorites } from './routes/Favorites'
 import { Genres } from './routes/Genres'
 import { Music } from './routes/Music'
@@ -27,7 +27,7 @@ export const App = () => {
               <Route path="/" element={ <MainContent></MainContent> } />
               <Route path="/Albums" element={ <Albums></Albums> } />
               <Route path="/Artist" element={ <Artist></Artist> } />
-              <Route path="/Explore" element={ <Explore></Explore> } />
+              <Route path="/Song" element={ <Song songID={3}/> } />
               <Route path="/Favorites" element={ <Favorites></Favorites> } />
               <Route path="/Genres" element={ <Genres></Genres> } />
               <Route path="/Music" element={ <Music></Music> } />

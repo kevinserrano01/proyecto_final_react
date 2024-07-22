@@ -5,6 +5,7 @@ import { Link, NavLink } from "react-router-dom";
 export const SideBar = () => {
   return (
     <div className="sidebar d-flex flex-column p-3">
+        <NavLink to='/song' className="mb-2" > Search </NavLink>
         <NavLink to='/music' className="mb-2">Explore</NavLink>
         <NavLink to='/favorites' className="mb-2" > Favorites </NavLink>
         <NavLink to='/playlist' className="mb-2" > PlayLists </NavLink>
