@@ -1,5 +1,5 @@
 import { CardMusic } from "../components/CardMusic";
-import { useFetchHook } from "../hooks/useFetchHook"
+import useFetchHook from "../hooks/useFetchHook";
 
 export const Song = ({songID}) => {
 

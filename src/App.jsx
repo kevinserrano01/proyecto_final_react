@@ -27,7 +27,7 @@ export const App = () => {
               <Route path="/" element={ <MainContent></MainContent> } />
               <Route path="/Albums" element={ <Albums></Albums> } />
               <Route path="/Artist" element={ <Artist></Artist> } />
-              <Route path="/Song" element={ <Song songID={3}/> } />
+              <Route path="/Song" element={ <Song songID={37}/> } />
               <Route path="/Favorites" element={ <Favorites></Favorites> } />
               <Route path="/Genres" element={ <Genres></Genres> } />
               <Route path="/Music" element={ <Music></Music> } />
