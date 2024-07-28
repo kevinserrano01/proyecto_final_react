@@ -1,10 +1,18 @@
-import React from 'react'
-import { useFetch } from '../hooks/useFetch'
+import { useEffect } from 'react'
+import useFetch from '../hooks/useFetchHook'
 import { CardMusic } from '../components/CardMusic'
 
 export const Music = () => {
 
-  const { data, isLoading, errors } = useFetch('https://sandbox.academiadevelopers.com/harmonyhub/songs/')
+  const [ {data, isLoading, errors}, doFetch ] = useFetch('https://sandbox.academiadevelopers.com/harmonyhub/songs/', {});
+
+  useEffect(() => {
+    doFetch();
+  }, []);
+
+  if (isLoading) return <h2>Cargando...</h2>;
+  if (errors) return <h2>Error al cargar las canciones.</h2>;
+  if (!data) return <h2>No hay canciones disponibles</h2>;
 
   return (
     <>

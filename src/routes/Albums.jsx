@@ -1,13 +1,17 @@
-import React from 'react'
-import { useFetch } from '../hooks/useFetch'
+import { useEffect } from 'react'
+import useFetch from '../hooks/useFetchHook'
 import { CardAlbum } from '../components/CardAlbum'
 
 export const Albums = () => {
-  const { data, isLoading, errors } = useFetch('https://sandbox.academiadevelopers.com/harmonyhub/albums/')
+  const [ {data, isLoading, errors}, doFetch ] = useFetch('https://sandbox.academiadevelopers.com/harmonyhub/albums/', {});
+
+  useEffect(() => {
+    doFetch();
+  }, []);
   
   if (isLoading) return <h2>Cargando...</h2>;
   if (errors) return <h2>Error al cargar los albunes.</h2>;
-  if (data.length <= 0) return <h2>No hay albunes disponibles</h2>;
+  if (!data) return <h2>No hay albunes disponibles</h2>;
 
   return (
         <div className="container">

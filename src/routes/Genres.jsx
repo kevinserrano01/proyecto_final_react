@@ -1,13 +1,17 @@
-import React from 'react'
+import { useEffect } from 'react'
 import { CardGenres } from '../components/CardGenres'
-import { useFetch } from '../hooks/useFetch'
+import useFetch from '../hooks/useFetchHook'
 
 export const Genres = () => {
-  const { data, isLoading, errors } = useFetch('https://sandbox.academiadevelopers.com/harmonyhub/genres/')
+  const [ {data, isLoading, errors}, doFetch ] = useFetch('https://sandbox.academiadevelopers.com/harmonyhub/genres/', {});
+
+  useEffect(() => {
+    doFetch();
+  }, []);
 
   if (isLoading) return <h2>Cargando...</h2>;
   if (errors) return <h2>Error al cargar los generos.</h2>;
-  if (data.length <= 0) return <h2>No hay generos disponibles</h2>;
+  if (!data) return <h2>No hay generos disponibles</h2>;
   
   return (
         <div className="container">

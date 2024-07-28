@@ -1,13 +1,13 @@
 import React from 'react'
 import { useState } from 'react'
-import useFetchHook from "../hooks/useFetchHook";
+import useFetch from "../hooks/useFetchHook";
 
 export const Login = () => {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
     const [triggerFetch, setTriggerFetch] = useState(false);
 
-    const { data, isError, isLoading } = useFetchHook(
+    const [{ data, isError, isLoading }, doFetch] = useFetch(
         "https://sandbox.academiadevelopers.com/api-auth/",
         {
             method: "POST",
@@ -16,13 +16,13 @@ export const Login = () => {
             },
             body: JSON.stringify({ username, password }),
         },
-        triggerFetch
+        // triggerFetch
     );
 
     function handleSubmit(event) {
         event.preventDefault();
         setTriggerFetch(true);
-        // window.location.href = "/";
+        doFetch(); // fetch
     }
 
     function handleChange(event) {
