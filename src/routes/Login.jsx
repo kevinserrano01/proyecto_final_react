@@ -1,10 +1,10 @@
 import React from 'react'
-import { useState } from 'react'
+import { useState, useRef } from 'react'
 import useFetch from "../hooks/useFetchHook";
 
 export const Login = () => {
-    const [username, setUsername] = useState('');
-    const [password, setPassword] = useState('');
+    const formData = useRef({ username: "", password: "" });
+    const [dataToSend, setDataToSend] = useState({ username: "", password: "" });
     const [triggerFetch, setTriggerFetch] = useState(false);
 
     const [{ data, isError, isLoading }, doFetch] = useFetch(
@@ -14,21 +14,26 @@ export const Login = () => {
             headers: {
                 "Content-Type": "application/json",
             },
-            body: JSON.stringify({ username, password }),
-        },
+            body: JSON.stringify(dataToSend),
+        }
         // triggerFetch
     );
 
     function handleSubmit(event) {
         event.preventDefault();
         setTriggerFetch(true);
+        setDataToSend(formData.current);
         doFetch(); // fetch
     }
 
     function handleChange(event) {
         const { name, value } = event.target;
-        if (name === "username") setUsername(value);
-        if (name === "password") setPassword(value);
+        if (name === "username"){
+            formData.current.username = value;
+        }
+        if (name === "password"){
+            formData.current.password = value;
+        }
     }
 
     return (
@@ -44,7 +49,7 @@ export const Login = () => {
                                     type="text"
                                     id="username"
                                     name="username"
-                                    value={username}
+                                    defaultValue=""
                                     onChange={handleChange}
                                 />
                             </div>
@@ -57,7 +62,7 @@ export const Login = () => {
                                     type="password"
                                     id="password"
                                     name="password"
-                                    value={password}
+                                    defaultValue=""
                                     onChange={handleChange}
                                 />
                             </div>
