@@ -1,4 +1,5 @@
 import { Navigate, Route, Routes } from "react-router-dom"
+import './styles/App.css'
 import { NavBar } from "./components/NavBar"
 import { SideBar } from './components/SideBar';
 import { MainContent } from "./components/MainContent";
@@ -13,11 +14,26 @@ import { Podcast } from './routes/Podcast'
 import { Live } from './routes/Live'
 import { Radio } from './routes/Radio'
 import { Login } from './routes/Login'
-import './styles/App.css'
+import { useAuth } from "./contexts/AuthContext";
+import { useState, useEffect } from "react";
 
 export const App = () => {
+  const [currentPath, setCurrentPath] = useState(window.location.pathname);
+  const { isAuthenticated, token } = useAuth("state");
+
+  useEffect(() => {
+    if (isAuthenticated) {
+        setCurrentPath("/music");
+    } else {
+        setCurrentPath("/login");
+    }
+  }, [isAuthenticated]);
+
+  console.log("Authenticated:", isAuthenticated);
+  console.log("Token", token);
+
   return (
-    <>
+    <>{currentPath === "/login" ?  <Login /> :
       <div className="App">
         <NavBar/>
         <div className="d-flex flex-column">
@@ -35,16 +51,14 @@ export const App = () => {
               <Route path="/Podcast" element={ <Podcast></Podcast> } />
               <Route path="/Live" element={ <Live></Live> } />
               <Route path="/Radio" element={ <Radio></Radio> } />
-              <Route path="/Login" element={ <Login></Login> } />
+              {/* <Route path="/Login" element={ <Login></Login> } /> */}
               {/* Ruta por defecto si ponemos cualquier cosa despues de la barra nos lleva al home. */}
               <Route path="/*" element={<Navigate to="/" />} />
             </Routes>
           </div>
-          
         </div>
       </div>
-
-      
+    }
     </>
   )
 }
