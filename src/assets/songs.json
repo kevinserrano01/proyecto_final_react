@@ -1,0 +1,28 @@
+[
+    {
+        "id": 3,
+        "created_at": "2024-06-18T16:53:53.953310-03:00",
+        "updated_at": "2024-06-18T16:53:53.953327-03:00",
+        "title": "No Body",
+        "year": null,
+        "duration": null,
+        "song_file": "http://sandbox.academiadevelopers.com/media/harmonyhub/songs/OneRepublic_-_Nobody_from_Kaiju_No_8__BaseNaija_q8IOY6P.mp3",
+        "album": null,
+        "owner": 1,
+        "artists": [],
+        "genres": []
+    },
+    {
+        "id": 6,
+        "created_at": "2024-06-18T18:52:40.226201-03:00",
+        "updated_at": "2024-06-18T18:52:40.226220-03:00",
+        "title": "Ohne Dich",
+        "year": null,
+        "duration": null,
+        "song_file": "http://sandbox.academiadevelopers.com/media/harmonyhub/songs/Ohne_Dich.mp3",
+        "album": null,
+        "owner": 1,
+        "artists": [],
+        "genres": []
+    }
+]
