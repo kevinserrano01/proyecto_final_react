@@ -1,5 +1,11 @@
+import { useParams } from "react-router-dom";
+import data from '../assets/songs.json';
 
 export const SongForm = () => {
+
+    const { id } = useParams();
+    const [song] = data.filter((song) => song.id === parseInt(id));
+
   return (
     <section className="section">
             <div className="columns is-centered">
@@ -13,7 +19,7 @@ export const SongForm = () => {
                                     type="text"
                                     id="name"
                                     name="name"
-                                    defaultValue=""
+                                    defaultValue={song.title}
                                     // onChange={handleChange}
                                 />
                             </div>
@@ -26,7 +32,7 @@ export const SongForm = () => {
                                     type="text"
                                     id="author"
                                     name="author"
-                                    defaultValue=""
+                                    defaultValue={song.owner}
                                     // onChange={handleChange}
                                 />
                             </div>
