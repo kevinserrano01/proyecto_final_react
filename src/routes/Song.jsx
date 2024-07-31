@@ -16,6 +16,11 @@ export const Song = ({songID}) => {
   return (
       <div className="container">
         <div className="row">
+          <div className="col-md-12">
+            <h1>componenete de barra de busqueda</h1>
+          </div>
+        </div>
+        <div className="row">
           <div key={data.id} className="col-md-4 mb-3">
             <CardMusic song={data} />
           </div>
