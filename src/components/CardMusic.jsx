@@ -1,8 +1,12 @@
+import { useNavigate } from 'react-router-dom'
 import '../styles/CardMusic.css'
 
 export const CardMusic = ({ song }) => {
+
+    const navigate = useNavigate();
+    
     return (
-        <div className="card">
+        <div className="card" onClick={() => navigate(`/explore/${song.id}`)}>
         <img src="src/assets/images/musicLogo.jpg" className="card-img-top" alt="logo music" />
             <div className="card-body">
                 <h5 className="card-title"> { song.title } </h5>
