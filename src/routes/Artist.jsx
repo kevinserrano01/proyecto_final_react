@@ -16,7 +16,7 @@ export const Artist = () => {
   return (
         <div className="container">
           <div className="row">
-            {data.map(artist => {
+            {data.results.map(artist => {
               return (
                 <div key={artist.id} className="col-md-4 mb-3">
                   <CardArtist artist={artist} />

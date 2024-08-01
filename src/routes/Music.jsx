@@ -3,7 +3,6 @@ import useFetch from '../hooks/useFetchHook'
 import { CardMusic } from '../components/CardMusic'
 
 export const Music = () => {
-
   const [ {data, isLoading, errors}, doFetch ] = useFetch('https://sandbox.academiadevelopers.com/harmonyhub/songs/', {});
 
   useEffect(() => {
@@ -22,7 +21,7 @@ export const Music = () => {
       : errors ? <p>Ha ocurriido un error</p> 
       : <div className="container">
           <div className="row">
-            {data.map(song => {
+            {data.results.map(song => {
               return (
                 <div key={song.id} className="col-md-4 mb-3">
                   <CardMusic song={song} />

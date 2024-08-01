@@ -12,6 +12,8 @@ import { Favorites } from "./routes/Favorites";
 import { Genres } from "./routes/Genres";
 import { Login } from "./routes/Login";
 import { Song } from "./routes/Song";
+import { PlayList } from "./routes/PlayList";
+import { PlayListDetails } from "./components/PlayListDetails";
 
 
 export const Router = createBrowserRouter([
@@ -56,7 +58,7 @@ export const Router = createBrowserRouter([
                 element: <Albums />
             },
             {
-                path: "/Artist",
+                path: "/Artists",
                 element: <Artist />
             },
             {
@@ -66,6 +68,31 @@ export const Router = createBrowserRouter([
             {
                 path: "/Genres",
                 element: <Genres />
+            },
+            {
+                path: "/Playlist",
+                children: [ // Explore/details [hijo de Explore]
+                    {
+                        index: true, // ruta raiz
+                        element: <PlayList />,
+                    },
+                    {
+                        path: ":idPlayList",
+                        element: <PlayListDetails />,
+                    },
+                    // {
+                    //     path: "new",
+                    //     element: <SongForm />,
+                    // },
+                    // {
+                    //     path: "edit/:id",
+                    //     element: <SongForm />,
+                    // },
+                    // {
+                    //     path: "delete/:id",
+                    //     element: <SongForm />,
+                    // }
+                ]
             },
             {
                 path: "*",

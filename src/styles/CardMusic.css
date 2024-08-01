@@ -6,11 +6,6 @@
     border-radius: 50px;
 }
 
-.card:hover {
-    box-shadow: 0 0 10px #e5d306;
-    cursor: pointer;
-}
-
 .card-img-top {
     border-radius: 50px;
 }

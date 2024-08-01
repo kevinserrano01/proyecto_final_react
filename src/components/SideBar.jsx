@@ -84,7 +84,7 @@ export const SideBar = () => {
       </NavLink>
 
       <NavLink
-        to="/artist"
+        to="/artists"
         className={({ isActive, isPending, isTransitioning }) =>
           [
             isPending ? "pending" : "",

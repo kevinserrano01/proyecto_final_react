@@ -7,3 +7,7 @@ body {
     background-color: #5b00db;
 }
 
+.card:hover {
+    box-shadow: 0 0 30px #a3a3a3;
+    cursor: pointer;
+}

@@ -16,7 +16,7 @@ export const Albums = () => {
   return (
         <div className="container">
           <div className="row">
-            {data.map(album => {
+            {data.results.map(album => {
               return (
                 <div key={album.id} className="col-md-4 mb-3">
                   <CardAlbum album={album} />

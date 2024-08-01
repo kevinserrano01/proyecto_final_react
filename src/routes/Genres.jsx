@@ -16,7 +16,7 @@ export const Genres = () => {
   return (
         <div className="container">
           <div className="row">
-            {data.map(gen => {
+            {data.results.map(gen => {
               return (
                 <div key={gen.id} className="col-md-4 mb-3">
                   <CardGenres gen={gen} />

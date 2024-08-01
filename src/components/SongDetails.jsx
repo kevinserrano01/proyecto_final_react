@@ -6,7 +6,6 @@ export const SongDetails = () => {
   const { idSong } = useParams(); // Renderizar de manera dinámica el id de cada cancion
 
   const [song] = data.filter((song) => song.id === parseInt(idSong));
-  console.log(song);
 
   return (
     <div className="card">

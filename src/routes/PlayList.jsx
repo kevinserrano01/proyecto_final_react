@@ -21,7 +21,7 @@ export const PlayList = () => {
       : errors ? <p>Ha ocurriido un error</p> 
       : <div className="container">
           <div className="row">
-            {data.map(playlist => {
+            {data.results.map(playlist => {
               return (
                 <div key={playlist.id} className="col-md-4 mb-3">
                   <CardPlayList playlist={playlist} />
