@@ -1,5 +1,5 @@
-import { useReducer,useContext } from 'react';
-import { createContext } from 'react'
+import { createContext, useReducer,useContext } from 'react';
+import { useLocation, useNavigate } from 'react-router-dom';
 
 const AuthContext = createContext({
     state: {},
@@ -22,6 +22,7 @@ function reducer(state, action) {
         case ACTIONS.LOGOUT:
             return {
                 isAuthenticated: false,
+                // token: localStorage.getItem('token') || null,
             };
         default:
             return state;
@@ -34,8 +35,15 @@ function AuthProvider({ children }) { // Colocar componentes dentro
         isAuthenticated: false,
     });
 
+    const navigate = useNavigate();
+    const location = useLocation();
+
     const actions = {
-        login: (token) => dispatch({ type: ACTIONS.LOGIN, payload: token }),
+        login: (token) => {
+            dispatch({ type: ACTIONS.LOGIN, payload: token });
+            const origin = location.state?.from?.pathname || "/"; 
+            navigate(origin);
+        },
         logout: () => dispatch({ type: ACTIONS.LOGOUT }),
     };
 

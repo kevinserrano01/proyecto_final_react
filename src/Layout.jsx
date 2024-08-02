@@ -5,18 +5,21 @@ import './styles/App.css'
 import { SideBar } from './components/SideBar'
 import './styles/MainContent.css'
 import './styles/SideBar.css'
+import { AuthProvider } from './contexts/AuthContext'
 
 
 export const Layout = () => {
   return (
-      <div className="App">
-        <NavBar/>
-        <div className="d-flex flex-column">
-          <SideBar />
-          <div className="main-content">
-            <Outlet />
+      <AuthProvider>
+        <div className="App">
+          <NavBar/>
+          <div className="d-flex flex-column">
+            <SideBar />
+            <div className="main-content">
+              <Outlet /> {/* Es reemplazado por el componente hijo */}
+            </div>
           </div>
         </div>
-      </div>
+      </AuthProvider>
   )
 }

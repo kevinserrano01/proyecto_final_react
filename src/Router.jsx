@@ -14,6 +14,7 @@ import { Login } from "./routes/Login";
 import { Song } from "./routes/Song";
 import { PlayList } from "./routes/PlayList";
 import { PlayListDetails } from "./components/PlayListDetails";
+import { ProtectedRoute } from "./security/ProtectedRoute";
 
 
 export const Router = createBrowserRouter([
@@ -21,19 +22,35 @@ export const Router = createBrowserRouter([
         element: <Layout />,
         children: [
             {
-                path: "/",
-                element: <MainContent />
+                path: "/Login",
+                element: <Login />
+            },
+            {
+                path: "/", // index: true => Ruta raiz
+                element: (
+                    <ProtectedRoute>
+                        <MainContent />
+                    </ProtectedRoute>
+                ),
             },
             {
                 path: "/Search",
-                element: <Song />
+                element: (
+                    <ProtectedRoute>
+                        <Song />
+                    </ProtectedRoute>
+                ),
             },
             {
                 path: "/Explore",
                 children: [ // Explore/details [hijo de Explore]
                     {
                         index: true, // ruta raiz
-                        element: <Music />,
+                        element: (
+                            <ProtectedRoute>
+                                <Music />
+                            </ProtectedRoute>
+                        ),
                     },
                     {
                         path: ":idSong",
@@ -55,26 +72,46 @@ export const Router = createBrowserRouter([
             },
             {
                 path: "/Albums",
-                element: <Albums />
+                element: (
+                    <ProtectedRoute>
+                        <Albums />
+                    </ProtectedRoute>
+                ),
             },
             {
                 path: "/Artists",
-                element: <Artist />
+                element: (
+                    <ProtectedRoute>
+                        <Artist />
+                    </ProtectedRoute>
+                ),
             },
             {
                 path: "/Favorites",
-                element: <Favorites />
+                element: (
+                    <ProtectedRoute>
+                        <Favorites />
+                    </ProtectedRoute>
+                ),
             },
             {
                 path: "/Genres",
-                element: <Genres />
+                element: (
+                    <ProtectedRoute>
+                        <Genres />
+                    </ProtectedRoute>
+                ),
             },
             {
                 path: "/Playlist",
                 children: [ // Explore/details [hijo de Explore]
                     {
                         index: true, // ruta raiz
-                        element: <PlayList />,
+                        element: (
+                            <ProtectedRoute>
+                                <PlayList />
+                            </ProtectedRoute>
+                        ),
                     },
                     {
                         path: ":idPlayList",
