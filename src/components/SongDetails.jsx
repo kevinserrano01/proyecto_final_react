@@ -9,7 +9,7 @@ export const SongDetails = () => {
 
   return (
     <div className="card">
-      <img src="../src/assets/images/musicLogo.jpg" className="card-img-top" alt="logo music" />
+      <img src="../assets/musicLogo.jpg" className="card-img-top" alt="logo music" />
         <div className="card-body">
             <h5 className="card-title"> { song.title } </h5>
             <p className="card-text">{ song.owner }</p>

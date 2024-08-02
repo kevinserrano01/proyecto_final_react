@@ -6,7 +6,7 @@ export const CardAlbum = ({ album }) => {
 
     return (
         <div className="card" onClick={() => navigate(`/albums/${album.id}`)}>
-            <img src="src/assets/images/logoAlbum.jpg" className="card-img-top" alt="logo music" />
+            <img src="/assets/logoAlbum.jpg" className="card-img-top" alt="logo music" />
             <div className="card-body">
                 <h5 className="card-title"> { album.title } </h5>
                 <p className="card-text">{ album.year }</p>
