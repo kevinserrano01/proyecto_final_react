@@ -11,10 +11,10 @@ import { SongDetails } from "./components/SongDetails";
 import { Favorites } from "./routes/Favorites";
 import { Genres } from "./routes/Genres";
 import { Login } from "./routes/Login";
-import { Song } from "./routes/Song";
 import { PlayList } from "./routes/PlayList";
 import { PlayListDetails } from "./components/PlayListDetails";
 import { ProtectedRoute } from "./security/ProtectedRoute";
+import { Search } from "./components/Search";
 
 
 export const Router = createBrowserRouter([
@@ -37,7 +37,7 @@ export const Router = createBrowserRouter([
                 path: "/Search",
                 element: (
                     <ProtectedRoute>
-                        <Song />
+                        <Search />
                     </ProtectedRoute>
                 ),
             },
