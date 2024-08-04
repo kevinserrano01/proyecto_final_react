@@ -1,35 +1,33 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { CardMusic } from "./CardMusic";
+import useFetch from "../hooks/useFetchHook";
 
 export const Search = () => {
   // Buscar cancion por nombre
   const [searchTerm, setSearchTerm] = useState('');
   const [songData, setSongData] = useState(null);
-  const [notFound, setNotFound] = useState(false)
+  const [ {data, isLoading, errors}, doFetch ] = useFetch('https://sandbox.academiadevelopers.com/harmonyhub/songs/', {});
 
-  const handleSearch = async (event) => {
+  useEffect(() => {
+    doFetch();
+  }, []);
+
+  if (isLoading) return <h2>Cargando...</h2>;
+  if (errors) return <h2>Error al cargar las canciones.</h2>;
+  if (!data) return <h2>No hay canciones para mostrar</h2>;
+
+  const handleSearch = (event) => {
     event.preventDefault();
-    try {
-      const response = await fetch("https://sandbox.academiadevelopers.com/harmonyhub/songs/");
-      const data = await response.json();
-      const songs = data.results;
 
-      const foundSong = songs.find((song) => song.title.toLowerCase() === searchTerm.toLowerCase());
-
+    if (data) {
+      const foundSong = data.results.find((song) => song.title.toLowerCase() === searchTerm.toLowerCase());
       if (foundSong) {
         setSongData(foundSong);
-        setNotFound(false);
       } else {
         setSongData(null);
-        setNotFound(true);
       }
-
-    } catch (error) {
-      console.error('Error fetching song:', error);
-      setSongData(null);
-      setNotFound(true);
     }
-  };
+  }
 
   return (
     <div className="container">
@@ -53,7 +51,7 @@ export const Search = () => {
             { songData ? (
                 <CardMusic song={songData} />
               ) : (
-                notFound && <p>No song found</p>
+                <h3>No song found</h3>
               )
             }
           </div>
