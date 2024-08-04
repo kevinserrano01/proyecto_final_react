@@ -15,6 +15,9 @@ import { PlayList } from "./routes/PlayList";
 import { PlayListDetails } from "./components/PlayListDetails";
 import { ProtectedRoute } from "./security/ProtectedRoute";
 import { Search } from "./components/Search";
+import { AlbumDetails } from "./components/Albums/AlbumDetails";
+import { ArtistDetails } from "./components/Artists/ArtistDetails";
+import { GenreDetails } from "./components/Genres/GenreDetails";
 
 
 export const Router = createBrowserRouter([
@@ -72,19 +75,61 @@ export const Router = createBrowserRouter([
             },
             {
                 path: "/Albums",
-                element: (
-                    <ProtectedRoute>
-                        <Albums />
-                    </ProtectedRoute>
-                ),
+                children: [ // Explore/details [hijo de Explore]
+                    {
+                        index: true, // ruta raiz
+                        element: (
+                            <ProtectedRoute>
+                                <Albums />
+                            </ProtectedRoute>
+                        ),
+                    },
+                    {
+                        path: ":idAlbum",
+                        element: <AlbumDetails />,
+                    },
+                    // {
+                    //     path: "new",
+                    //     element: <SongForm />,
+                    // },
+                    // {
+                    //     path: "edit/:id",
+                    //     element: <SongForm />,
+                    // },
+                    // {
+                    //     path: "delete/:id",
+                    //     element: <SongForm />,
+                    // }
+                ]
             },
             {
                 path: "/Artists",
-                element: (
-                    <ProtectedRoute>
-                        <Artist />
-                    </ProtectedRoute>
-                ),
+                children: [ // Explore/details [hijo de Explore]
+                    {
+                        index: true, // ruta raiz
+                        element: (
+                            <ProtectedRoute>
+                                <Artist />
+                            </ProtectedRoute>
+                        ),
+                    },
+                    {
+                        path: ":idArtist",
+                        element: <ArtistDetails />,
+                    },
+                    // {
+                    //     path: "new",
+                    //     element: <SongForm />,
+                    // },
+                    // {
+                    //     path: "edit/:id",
+                    //     element: <SongForm />,
+                    // },
+                    // {
+                    //     path: "delete/:id",
+                    //     element: <SongForm />,
+                    // }
+                ]
             },
             {
                 path: "/Favorites",
@@ -96,11 +141,32 @@ export const Router = createBrowserRouter([
             },
             {
                 path: "/Genres",
-                element: (
-                    <ProtectedRoute>
-                        <Genres />
-                    </ProtectedRoute>
-                ),
+                children: [ // Explore/details [hijo de Explore]
+                    {
+                        index: true, // ruta raiz
+                        element: (
+                            <ProtectedRoute>
+                                <Genres />
+                            </ProtectedRoute>
+                        ),
+                    },
+                    {
+                        path: ":idGenre",
+                        element: <GenreDetails />,
+                    },
+                    // {
+                    //     path: "new",
+                    //     element: <SongForm />,
+                    // },
+                    // {
+                    //     path: "edit/:id",
+                    //     element: <SongForm />,
+                    // },
+                    // {
+                    //     path: "delete/:id",
+                    //     element: <SongForm />,
+                    // }
+                ]
             },
             {
                 path: "/Playlist",
