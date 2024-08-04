@@ -17,9 +17,7 @@ export const Music = () => {
     <>
       <h1>Songs</h1>
       <hr />
-      {isLoading ? <h4>Cargando...</h4>
-      : errors ? <p>Ha ocurriido un error</p> 
-      : <div className="container">
+      <div className="container">
           <div className="row">
             {data.results.map(song => {
               return (
@@ -29,8 +27,7 @@ export const Music = () => {
               )
             })}
           </div>
-        </div>
-      } 
+      </div>
     </>
   )
 }
