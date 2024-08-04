@@ -8,7 +8,7 @@ export const CardArtist = ({ artist }) => {
         <div className="card" onClick={() => navigate(`/artists/${artist.id}`)}>
             { artist.image ? // Si el artista tiene imagen, mostrarla, sino mostrar una imagen por defecto
                 <img src={artist.image} className="card-img-top" alt="image artist" /> :
-                <img src="public/assets/logoArtist.jpg" className="card-img-top" alt="image artist" />
+                <img src="/assets/logoArtist.jpg" className="card-img-top" alt="image artist" />
             }
             <div className="card-body">
                 <h5 className="card-title"> { artist.name } </h5>
