@@ -1,6 +1,6 @@
 import { useParams } from 'react-router-dom';
 import { useEffect } from 'react';
-import useFetch from '../hooks/useFetchHook';
+import useFetch from '../../hooks/useFetchHook';
 
 export const PlayListDetails = () => {
   const { idPlayList } = useParams(); // Renderizar de manera dinámica el id de cada playList

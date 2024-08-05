@@ -1,7 +1,7 @@
 import { useParams } from 'react-router-dom';
 import { useEffect } from 'react';
-import useFetch from '../hooks/useFetchHook';
-import '../styles/CardMusic.css'
+import useFetch from '../../hooks/useFetchHook';
+import './CardMusic.css';
 
 export const SongDetails = () => {
   const { idSong } = useParams(); // Renderizar de manera dinámica el id de cada cancion

@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { CardMusic } from "./CardMusic";
-import useFetch from "../hooks/useFetchHook";
+import useFetch from "../../hooks/useFetchHook";
 
 export const Search = () => {
   // Buscar cancion por nombre
