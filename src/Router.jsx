@@ -1,20 +1,20 @@
 import { createBrowserRouter } from "react-router-dom";
-import { MainContent } from "./components/MainContent";
+import { MainContent } from "./components/Layout/MainContent";
 import { Albums } from "./routes/Albums";
 import { Artist } from "./routes/Artist";
 import { NotFound } from "./components/NotFound";
 import { Layout } from "./Layout";
 import './styles/App.css'
 import { Music } from "./routes/Music";
-import { SongForm } from "./components/SongForm";
-import { SongDetails } from "./components/SongDetails";
+import { SongForm } from "./components/Music/SongForm";
+import { SongDetails } from "./components/Music/SongDetails";
 import { Favorites } from "./routes/Favorites";
 import { Genres } from "./routes/Genres";
-import { Login } from "./routes/Login";
+import { Login } from "./components/auth/Login";
 import { PlayList } from "./routes/PlayList";
-import { PlayListDetails } from "./components/PlayListDetails";
+import { PlayListDetails } from "./components/PlayLists/PlayListDetails";
 import { ProtectedRoute } from "./security/ProtectedRoute";
-import { Search } from "./components/Search";
+import { Search } from "./components/Search/Search";
 import { AlbumDetails } from "./components/Albums/AlbumDetails";
 import { ArtistDetails } from "./components/Artists/ArtistDetails";
 import { GenreDetails } from "./components/Genres/GenreDetails";

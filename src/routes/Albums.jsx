@@ -1,6 +1,6 @@
 import { useEffect } from 'react'
 import useFetch from '../hooks/useFetchHook'
-import { CardAlbum } from '../components/CardAlbum'
+import { CardAlbum } from '../components/Albums/CardAlbum'
 
 export const Albums = () => {
   const [ {data, isLoading, errors}, doFetch ] = useFetch('https://sandbox.academiadevelopers.com/harmonyhub/albums/', {});

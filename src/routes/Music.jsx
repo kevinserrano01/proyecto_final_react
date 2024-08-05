@@ -1,9 +1,9 @@
 import { useEffect } from 'react'
 import useFetch from '../hooks/useFetchHook'
-import { CardMusic } from '../components/CardMusic'
+import { CardMusic } from '../components/Music/CardMusic'
 
 export const Music = () => {
-  const [ {data, isLoading, errors}, doFetch ] = useFetch('https://sandbox.academiadevelopers.com/harmonyhub/songs/', {});
+  const [ {data, isLoading, errors}, doFetch ] = useFetch('https://sandbox.academiadevelopers.com/harmonyhub/songs/?page=3', {});
 
   useEffect(() => {
     doFetch();

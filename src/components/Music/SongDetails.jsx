@@ -2,10 +2,15 @@ import { useParams } from 'react-router-dom';
 import { useEffect } from 'react';
 import useFetch from '../../hooks/useFetchHook';
 import './CardMusic.css';
+import { useAuth } from '../../contexts/AuthContext';
 
 export const SongDetails = () => {
   const { idSong } = useParams(); // Renderizar de manera dinámica el id de cada cancion
   const [ {data, isLoading, errors}, doFetch ] = useFetch('https://sandbox.academiadevelopers.com/harmonyhub/songs/', {});
+  const { isAuthenticated, token } = useAuth("state");
+
+  console.log(token);
+  console.log(idSong);
 
   useEffect(() => {
     doFetch();
@@ -17,8 +22,24 @@ export const SongDetails = () => {
 
   const [song] = data.results.filter((song) => song.id === parseInt(idSong));
 
+  const deleteSong = async () => {
+    const response = await fetch(`https://sandbox.academiadevelopers.com/harmonyhub/songs/${idSong}`, {
+      method: 'DELETE',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Token ${token}`,
+      },
+    });
+
+    if (response.ok) {
+      alert('Cancion eliminada correctamente');
+    } else {
+      alert('Error al eliminar la cancion');
+    }
+  }
+
   return (
-    <div className="col-md-6">
+    <div className="col-md-5">
       <div className="card">
         <img src="../assets/musicLogo.jpg" className="card-img-top" alt="logo music" />
           <div className="card-body">
@@ -34,6 +55,8 @@ export const SongDetails = () => {
                       <source src={song.song_file} type="audio/mpeg" /> Tu navegador no soporta el elemento de audio.
                   </audio>
               </div>
+              <button type="button" className="btn btn-warning">Edit</button>
+              <button type="button" className="btn btn-danger" onClick={deleteSong}>Delete</button>
           </div>
         </div>
     </div>

@@ -1,5 +1,5 @@
 import { useEffect } from 'react'
-import { CardGenres } from '../components/CardGenres'
+import { CardGenres } from '../components/Genres/CardGenres'
 import useFetch from '../hooks/useFetchHook'
 
 export const Genres = () => {

@@ -3,8 +3,10 @@ import { useEffect } from 'react';
 import useFetch from '../../hooks/useFetchHook';
 
 export const ArtistDetails = () => {
+    const page = 2;
+
     const { idArtist } = useParams(); // Renderizar de manera dinámica el id de cada artista
-    const [ {data, isLoading, errors}, doFetch ] = useFetch('https://sandbox.academiadevelopers.com/harmonyhub/artists/', {});
+    const [ {data, isLoading, errors}, doFetch ] = useFetch(`https://sandbox.academiadevelopers.com/harmonyhub/artists/?page=${page}`, {});
 
     useEffect(() => {
         doFetch();

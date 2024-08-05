@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { CardMusic } from "./CardMusic";
+import { CardMusic } from "../Music/CardMusic";
 import useFetch from "../../hooks/useFetchHook";
 
 export const Search = () => {

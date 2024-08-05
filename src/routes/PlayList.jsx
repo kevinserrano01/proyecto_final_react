@@ -1,6 +1,6 @@
 import { useEffect } from 'react'
 import useFetch from '../hooks/useFetchHook'
-import { CardPlayList } from '../components/CardPlayList'
+import { CardPlayList } from '../components/PlayLists/CardPlayList'
 
 export const PlayList = () => {
   const [ {data, isLoading, errors}, doFetch ] = useFetch('https://sandbox.academiadevelopers.com/harmonyhub/playlists/', {});
