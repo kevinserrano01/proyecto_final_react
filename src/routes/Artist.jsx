@@ -1,19 +1,10 @@
 import { useEffect, useState } from 'react'
 import useFetch from '../hooks/useFetchHook'
 import { CardArtist } from '../components/Artists/CardArtist';
+import { usePage } from '../contexts/PageContext';
 
 export const Artist = () => {
-  // Guardar el número de página en el local storage:
-  const savePageToLocalStorage = (page) => {
-    localStorage.setItem('currentPage', page);
-  };
-
-  // obtener el número de página desde el local storage:
-  const getPageFromLocalStorage = () => {
-      return localStorage.getItem('currentPage') || 1; // Devuelve 1 si no hay valor guardado
-  };
-
-  const [page, setPage] = useState(getPageFromLocalStorage());
+  const { page, handlePageChange } = usePage(); // Obtengo el numero de la página y la función para cambiarla
   const [ {data, isLoading, errors}, doFetch ] = useFetch(`https://sandbox.academiadevelopers.com/harmonyhub/artists/?page=${page}`, {});
 
   useEffect(() => {
@@ -23,11 +14,6 @@ export const Artist = () => {
   if (isLoading) return <h2>Cargando...</h2>;
   if (errors) return <h2>Error al cargar los artistas.</h2>;
   if (!data) return <h2>No hay artistas disponibles</h2>;
-
-  const handlePageChange = (newPage) => {
-    setPage(newPage);
-    savePageToLocalStorage(newPage);
-  };
 
   return (
         <div className="container">
