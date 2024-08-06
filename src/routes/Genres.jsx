@@ -17,6 +17,8 @@ export const Genres = () => {
   
   return (
         <div className="container">
+          <h1>Genres</h1>
+          <hr />
           <div className="row">
             {data.results.map(gen => {
               return (

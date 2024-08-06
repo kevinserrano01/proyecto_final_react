@@ -26,11 +26,11 @@ export const PlayListDetails = () => {
   };
 
   return (
-    <>
+    <div className='container'>
     <div className="row">
       <div className="col-md-4 mb-4">
         {/* boton para volver a la pestaña anterior */}
-        <button className="btn btn-light" onClick={handleBackClick}>Volver</button>
+        <button className="btn btn-light" onClick={handleBackClick}>back</button>
       </div>
     </div>
     <div className="row">
@@ -58,6 +58,6 @@ export const PlayListDetails = () => {
         </ul>
       </div>
     </div>
-    </>
+    </div>
   )
 }

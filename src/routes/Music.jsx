@@ -31,7 +31,7 @@ export const Music = () => {
           </div>
           <div className="row">
             <button className="btn btn-warning" onClick={() => handlePageChange(page - 1)} disabled={page <= 1}>Previous</button>
-            <button className="btn btn-success" onClick={() => handlePageChange(page + 1)} disabled={page >= 2}>Next</button>
+            <button className="btn btn-success" onClick={() => handlePageChange(page + 1)} disabled={page >= 8}>Next</button>
           </div>
       </div>
     </>

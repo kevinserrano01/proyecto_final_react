@@ -17,7 +17,7 @@ export const Artist = () => {
 
   return (
         <div className="container">
-          <h2>Artists</h2>
+          <h1>Artists</h1>
           <hr />
           <div className="row">
             {data.results.map(artist => {
