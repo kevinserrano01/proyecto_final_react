@@ -1,14 +1,16 @@
 import { useParams } from 'react-router-dom';
 import { useEffect } from 'react';
 import useFetch from '../../hooks/useFetchHook';
+import { usePage } from '../../contexts/PageContext';
 
 export const AlbumDetails = () => {
+    const { page, handlePageChange } = usePage();
     const { idAlbum } = useParams(); // Renderizar de manera dinámica el id de cada album
-    const [ {data, isLoading, errors}, doFetch ] = useFetch('https://sandbox.academiadevelopers.com/harmonyhub/albums/', {});
+    const [ {data, isLoading, errors}, doFetch ] = useFetch(`https://sandbox.academiadevelopers.com/harmonyhub/albums/?page=${page}`, {});
 
     useEffect(() => {
         doFetch();
-    }, []);
+    }, [page]);
 
     if (isLoading) return <h2>Cargando...</h2>;
     if (errors) return <h2>Error al cargar album.</h2>;
