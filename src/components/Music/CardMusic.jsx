@@ -1,5 +1,5 @@
 import { useNavigate } from 'react-router-dom'
-import '../styles/CardMusic.css'
+import './CardMusic.css'
 
 export const CardMusic = ({ song }) => {
 

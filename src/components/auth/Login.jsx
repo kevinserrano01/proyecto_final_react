@@ -1,58 +1,97 @@
-import { useEffect, useRef } from "react"
-import { useForm } from "../../hooks/useForm"
+import { useState, useRef, useContext, useEffect } from 'react'
+import useFetch from "../../hooks/useFetchHook";
+import { useAuth } from '../../contexts/AuthContext';
 
 export const Login = () => {
+    const [username, setUsername] = useState("");
+    const [password, setPassword] = useState("");
+    const [triggerFetch, setTriggerFetch] = useState(false);
 
-    const focusRef = useRef()
+    const [{ data, isError, isLoading }, doFetch] = useFetch(
+        "https://sandbox.academiadevelopers.com/api-auth/",
+        {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({ username, password }),
+        }
+        // triggerFetch
+    );
 
-    const initialForm = {
-        userName: "",
-        email: "",
-        password: ""
+    const { login } = useAuth("actions");
+
+    function handleSubmit(event) {
+        event.preventDefault();
+        setTriggerFetch(true);
+        doFetch(); // fetch
     }
 
-    const {formState, username, password, onInputChange} = useForm(initialForm)
-
-
-    const onSubmit = (event) => {
-        event.preventDefault()
-        console.log(formState)
+    function handleChange(event) {
+        const { name, value } = event.target;
+        if (name === "username") setUsername(value);
+        if (name === "password") setPassword(value);
     }
 
-    // HACER FOCO EN EL INPUT O EN ALGUNA OTRA PARTE AL CARGAR LA PAGINA WEB.
     useEffect(() => {
-      focusRef.current.focus()
-    }, [])
-    
+        if (data && !isError && triggerFetch) {
+            login(data.token);
+        }
+    }, [data, isError, triggerFetch]);
 
-  return (
-    <div className="container">
-        <form onSubmit={onSubmit}>
-            <div className="mb-3">
-                <label htmlFor="username">Username</label>
-                < input
-                    ref = {focusRef}
-                    type="username"
-                    className="form-control"
-                    name="username"
-                    placeholder="Enter your username"
-                    value={username}
-                    onChange={onInputChange}
-                />
+
+    return (
+        <section className="section">
+            <div className="columns is-centered">
+                <div className="column is-4">
+                    <form onSubmit={handleSubmit}>
+                        <div className="field">
+                            <label htmlFor="username">Nombre de usuario:</label>
+                            <div className="control has-icons-left">
+                                <input
+                                    className="input"
+                                    type="text"
+                                    id="username"
+                                    name="username"
+                                    defaultValue=""
+                                    onChange={handleChange}
+                                />
+                            </div>
+                        </div>
+                        <div className="field">
+                            <label htmlFor="password">Contraseña:</label>
+                            <div className="control has-icons-left">
+                                <input
+                                    className="input"
+                                    type="password"
+                                    id="password"
+                                    name="password"
+                                    defaultValue=""
+                                    onChange={handleChange}
+                                />
+                            </div>
+                        </div>
+                        <div className="field">
+                            <div className="control">
+                                <button
+                                    type="submit"
+                                    className="button is-primary is-fullwidth"
+                                >
+                                    Enviar
+                                </button>
+                                {isLoading && triggerFetch && (
+                                    <p>Cargando...</p>
+                                )}
+                                {isError && <p>Error al cargar los datos.</p>}
+                                {data && (
+                                    <p>{`Token obtenido: ${data.token}`}</p>
+                                )}
+                            </div>
+                        </div>
+                    </form>
+                </div>
             </div>
-            <div className="mb-3">
-                <label htmlFor="password">Password</label>
-                <input
-                    type="password"
-                    className="form-control"
-                    name="password"
-                    placeholder="Enter your password"
-                    value={password}
-                    onChange={onInputChange}
-                />
-            </div>
-            <button type="submit" className="btn btn-primary">Submit</button>
-        </form>
-    </div>
-  )
+        </section>
+    );
 }
+

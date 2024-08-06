@@ -1,5 +1,5 @@
 import { useParams } from "react-router-dom";
-import data from '../assets/songs.json';
+import data from '../../assets/songs.json';
 
 export const SongForm = () => {
 

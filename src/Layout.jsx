@@ -1,10 +1,10 @@
 import React from 'react'
-import { NavBar } from './components/NavBar'
+import { NavBar } from './components/Layout/NavBar'
 import { Outlet } from 'react-router-dom'
 import './styles/App.css'
-import { SideBar } from './components/SideBar'
-import './styles/MainContent.css'
-import './styles/SideBar.css'
+import { SideBar } from './components/Layout/SideBar'
+import './components/Layout/MainContent.css'
+import './components/Layout/SideBar.css'
 import { AuthProvider } from './contexts/AuthContext'
 
 

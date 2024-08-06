@@ -1,5 +1,4 @@
-import React from 'react'
-import '../styles/MainContent.css'
+import './MainContent.css'
 
 export const MainContent = () => {
   return (
