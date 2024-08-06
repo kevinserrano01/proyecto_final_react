@@ -1,13 +1,15 @@
 import { useEffect } from 'react'
 import useFetch from '../hooks/useFetchHook'
 import { CardMusic } from '../components/Music/CardMusic'
+import { usePage } from '../contexts/PageContext'
 
 export const Music = () => {
-  const [ {data, isLoading, errors}, doFetch ] = useFetch('https://sandbox.academiadevelopers.com/harmonyhub/songs/?page=3', {});
+  const { page, handlePageChange } = usePage(); // Obtengo el numero de la página y la función para cambiarla
+  const [ {data, isLoading, errors}, doFetch ] = useFetch(`https://sandbox.academiadevelopers.com/harmonyhub/songs/?page=${page}`, {});
 
   useEffect(() => {
     doFetch();
-  }, []);
+  }, [page]);
 
   if (isLoading) return <h2>Cargando...</h2>;
   if (errors) return <h2>Error al cargar las canciones.</h2>;
@@ -26,6 +28,10 @@ export const Music = () => {
                 </div>
               )
             })}
+          </div>
+          <div className="row">
+            <button className="btn btn-warning" onClick={() => handlePageChange(page - 1)} disabled={page <= 1}>Previous</button>
+            <button className="btn btn-success" onClick={() => handlePageChange(page + 1)} disabled={page >= 2}>Next</button>
           </div>
       </div>
     </>

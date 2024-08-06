@@ -3,10 +3,12 @@ import { useEffect } from 'react';
 import useFetch from '../../hooks/useFetchHook';
 import './CardMusic.css';
 import { useAuth } from '../../contexts/AuthContext';
+import { usePage } from '../../contexts/PageContext';
 
 export const SongDetails = () => {
+  const { page, handlePageChange } = usePage();
   const { idSong } = useParams(); // Renderizar de manera dinámica el id de cada cancion
-  const [ {data, isLoading, errors}, doFetch ] = useFetch('https://sandbox.academiadevelopers.com/harmonyhub/songs/', {});
+  const [ {data, isLoading, errors}, doFetch ] = useFetch(`https://sandbox.academiadevelopers.com/harmonyhub/songs/?page=${page}`, {});
   const { isAuthenticated, token } = useAuth("state");
 
   console.log(token);
@@ -14,7 +16,7 @@ export const SongDetails = () => {
 
   useEffect(() => {
     doFetch();
-  }, []);
+  }, [page]);
 
   if (isLoading) return <h2>Cargando...</h2>;
   if (errors) return <h2>Error al cargar la cancion.</h2>;

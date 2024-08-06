@@ -5,7 +5,6 @@ import { usePage } from '../../contexts/PageContext';
 
 export const ArtistDetails = () => {
     const { page, handlePageChange } = usePage();
-
     const { idArtist } = useParams(); // Renderizar de manera dinámica el id de cada artista
     const [ {data, isLoading, errors}, doFetch ] = useFetch(`https://sandbox.academiadevelopers.com/harmonyhub/artists/?page=${page}`, {});
 
