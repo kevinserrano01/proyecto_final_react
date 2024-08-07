@@ -38,6 +38,7 @@ export const SongDetails = () => {
 
     if (response.ok) {
       alert('Cancion eliminada correctamente');
+      navigate('/explore');
     } else {
       alert('Error al eliminar la cancion');
     }
@@ -53,7 +54,10 @@ export const SongDetails = () => {
     </div>
     <div className="col-md-5">
       <div className="card">
-        <img src="../assets/musicLogo.jpg" className="card-img-top" alt="logo music" />
+          {song.song_file ? 
+            <img src={song.cover} className="card-img-top" alt="logo music" /> :
+            <img src="/assets/musicLogo.jpg" className="card-img-top" alt="logo music" />
+          }
           <div className="card-body">
             <h5 className="card-title"> { song.title } </h5>
             <p className="card-text"> Author: { song.owner }</p>

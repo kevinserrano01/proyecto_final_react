@@ -9,5 +9,9 @@ body {
 
 .card:hover {
     box-shadow: 0 0 30px #a3a3a3;
+}
+
+.card-title:hover {
     cursor: pointer;
+    text-decoration:underline;
 }

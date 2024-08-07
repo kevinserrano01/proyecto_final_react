@@ -60,7 +60,7 @@ export const Router = createBrowserRouter([
                         element: <SongDetails />,
                     },
                     {
-                        path: "new",
+                        path: "add-song",
                         element: <SongForm />,
                     },
                     {
