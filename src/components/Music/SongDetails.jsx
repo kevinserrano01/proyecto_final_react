@@ -10,7 +10,7 @@ export const SongDetails = () => {
   const navigate = useNavigate();
   const { idSong } = useParams(); // Renderizar de manera dinámica el id de cada cancion
   const [ {data, isLoading, errors}, doFetch ] = useFetch(`https://sandbox.academiadevelopers.com/harmonyhub/songs/?page=${page}`, {});
-  const { isAuthenticated, token } = useAuth("state");
+  const { token } = useAuth("state");
 
   useEffect(() => {
     doFetch();
@@ -44,6 +44,10 @@ export const SongDetails = () => {
     }
   }
 
+  const editSong = () => {
+    navigate(`/explore/edit-song/${idSong}`);
+  };
+
   return (
     <div className='container'>
     <div className="row">
@@ -70,7 +74,7 @@ export const SongDetails = () => {
                       <source src={song.song_file} type="audio/mpeg" /> Tu navegador no soporta el elemento de audio.
                   </audio>
               </div>
-              <button type="button" className="btn btn-warning m-2">Edit</button>
+              <button type="button" className="btn btn-warning m-2" onClick={editSong}>Edit</button>
               <button type="button" className="btn btn-danger" onClick={deleteSong}>Delete</button>
           </div>
         </div>

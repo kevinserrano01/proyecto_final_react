@@ -64,7 +64,7 @@ export const Router = createBrowserRouter([
                         element: <SongForm />,
                     },
                     {
-                        path: "edit/:id",
+                        path: "edit-song/:idSong",
                         element: <SongForm />,
                     },
                     {

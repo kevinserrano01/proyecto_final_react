@@ -1,6 +1,15 @@
 import { Link, NavLink } from "react-router-dom";
+import { useAuth } from "../../contexts/AuthContext";
 
 export const NavBar = () => {
+  const { logout } = useAuth("actions");
+
+  const handleLogout = () => {
+    logout();
+    // Redirigir al usuario a la página de inicio de sesión
+    window.location.href = '/login';
+  };
+
   return (
     <>
       <nav className="navbar navbar-expand-lg navbar-dark fixed-top">
@@ -19,7 +28,7 @@ export const NavBar = () => {
                     </button>
                     </li>
                     <li className="nav-item">
-                      <Link to='/login' className="nav-link" > Logout </Link>
+                      <button className="nav-link" onClick={handleLogout}> Logout </button>
                     </li>
                 </ul>
             </div>
