@@ -68,7 +68,7 @@ export const SongDetails = () => {
             <p className="card-text"> Views: { song.view_count }</p>
             <p className="card-text">Year: { song.year }</p>
             <p className="card-text"> Duration: { song.duration }</p>
-            <p className="card-text">Uploaded: { song.created_at }</p>
+            <p className="card-text">Uploaded: { song.updated_at }</p>
             <div className="audio-player">
                 <audio controls>
                       <source src={song.song_file} type="audio/mpeg" /> Tu navegador no soporta el elemento de audio.

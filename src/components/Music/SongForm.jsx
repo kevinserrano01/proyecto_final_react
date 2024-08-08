@@ -19,7 +19,7 @@ export const SongForm = () => {
         cover: null,
     });
 
-    const [{ isError, isLoading }, doFetch] = useFetch(idSong ? `https://sandbox.academiadevelopers.com/harmonyhub/songs/${idSong}` : 'https://sandbox.academiadevelopers.com/harmonyhub/songs/', {
+    const [{ isError, isLoading }, doFetch] = useFetch(idSong ? `https://sandbox.academiadevelopers.com/harmonyhub/songs/${idSong}/` : 'https://sandbox.academiadevelopers.com/harmonyhub/songs/', {
         method: idSong ? 'PUT' : 'POST',
         headers: {
           'Authorization': `Token ${token}`,
