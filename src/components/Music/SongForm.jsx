@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate } from "react-router-dom";
 import { useAuth } from '../../contexts/AuthContext';
 import useFetch from '../../hooks/useFetchHook';
+import { SlArrowLeft } from "react-icons/sl";
 
 export const SongForm = () => {
     const { idSong } = useParams();
@@ -76,18 +77,30 @@ export const SongForm = () => {
         // window.location.reload(); // Recargar la página después de la navegación
     };
 
-
+    // Función para volver a la pestaña anterior
+    const handleBackClick = () => {
+      navigate(-1);
+    };
 
   return (
-    <section className="section">
-      <div className="columns is-centered">
-        <div className="column is-4">
+    <section className="container mb-3">
+      <div className="row">
+        <div className="col-md-4 mb-3">
+          {/* boton para volver a la pestaña anterior */}
+          <button className="btn btn-light" onClick={handleBackClick}>
+            <SlArrowLeft /> Back
+          </button>
+        </div>
+      </div>
+      <div className="row">
+        <div className="col-md-4"></div>
+        <div className="col-md-4 mb-3">
           <form onSubmit={handleSubmit}>
-            <div className="field">
-              <label htmlFor="title">Song name:</label>
+            <div className="mb-3">
+              <label htmlFor="title" className='form-label'>Song name:</label>
               <div className="control has-icons-left">
                 <input
-                  className="input"
+                  className="form-control"
                   type="text"
                   id="title"
                   name="title"
@@ -97,11 +110,11 @@ export const SongForm = () => {
                 />
               </div>
             </div>
-            <div className="field">
-              <label htmlFor="owner">Author</label>
+            <div className="mb-3">
+              <label htmlFor="owner" className='form-label'>Author</label>
               <div className="control has-icons-left">
                 <input
-                  className="input"
+                  className="form-control"
                   type="text"
                   id="owner"
                   name="owner"
@@ -110,11 +123,11 @@ export const SongForm = () => {
                 />
               </div>
             </div>
-            <div className="field">
-              <label htmlFor="year">Year</label>
+            <div className="mb-3">
+              <label htmlFor="year" className='form-label'>Year</label>
               <div className="control has-icons-left">
                 <input
-                  className="input"
+                  className="form-control"
                   type="number"
                   id="year"
                   name="year"
@@ -123,11 +136,11 @@ export const SongForm = () => {
                 />
               </div>
             </div>
-            <div className="field">
-              <label htmlFor="duration">Duration</label>
+            <div className="mb-3">
+              <label htmlFor="duration" className='form-label'>Duration</label>
               <div className="control has-icons-left">
                 <input
-                  className="input"
+                  className="form-control"
                   type="text"
                   id="duration"
                   name="duration"
@@ -136,11 +149,11 @@ export const SongForm = () => {
                 />
               </div>
             </div>
-            <div className="field">
-              <label htmlFor="song_file">Song File</label>
+            <div className="mb-3">
+              <label htmlFor="song_file" className='form-label'>Song File</label>
               <div className="control has-icons-left">
                 <input
-                  className="input"
+                  className="form-control"
                   type="file"
                   id="song_file"
                   name="song_file"
@@ -148,11 +161,11 @@ export const SongForm = () => {
                 />
               </div>
             </div>
-            <div className="field">
-              <label htmlFor="views">Views</label>
+            <div className="mb-3">
+              <label htmlFor="views" className='form-label'>Views</label>
               <div className="control has-icons-left">
                 <input
-                  className="input"
+                  className="form-control"
                   type="number"
                   id="views"
                   name="views"
@@ -161,11 +174,11 @@ export const SongForm = () => {
                 />
               </div>
             </div>
-            <div className="field">
-              <label htmlFor="cover">Cover</label>
+            <div className="mb-3">
+              <label htmlFor="cover" className='form-label'>Cover</label>
               <div className="control has-icons-left">
                 <input
-                  className="input"
+                  className="form-control"
                   type="file"
                   id="cover"
                   name="cover"
@@ -179,6 +192,7 @@ export const SongForm = () => {
             {isError && <p>Error al guardar la canción</p>}
           </form>
         </div>
+        <div className="col-md-4"></div>
       </div>
     </section>
   )

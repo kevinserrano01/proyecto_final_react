@@ -1,6 +1,7 @@
 import { useNavigate } from 'react-router-dom'
 import './CardMusic.css'
 import { useParams } from 'react-router-dom'
+import { SlHeart } from "react-icons/sl";
 
 export const CardMusic = ({ song }) => {
     const { idSong } = useParams(); // Renderizar de manera dinámica el id de cada cancion
@@ -21,7 +22,9 @@ export const CardMusic = ({ song }) => {
             <div className="card-body">
                 <h5 className="card-title" onClick={() => navigate(`/explore/${song.id}`)}> { song.title } </h5>
                 <p className="card-text">{ song.owner }</p>
-                <button type="button" className="btn btn-outline-danger" onClick={addFavorite}>♥️</button>
+                <button type="button" className="btn btn-outline-danger btn-lg" onClick={addFavorite}>
+                    ♥️
+                </button>
                 <div className="audio-player">
                     <audio controls>
                          <source src={song.song_file} type="audio/mpeg" /> Tu navegador no soporta el elemento de audio.
