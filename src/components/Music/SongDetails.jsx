@@ -58,7 +58,7 @@ export const SongDetails = () => {
     </div>
     <div className="col-md-5">
       <div className="card">
-          {song.song_file ? 
+          {song.cover ? 
             <img src={song.cover} className="card-img-top" alt="logo music" /> :
             <img src="/assets/musicLogo.jpg" className="card-img-top" alt="logo music" />
           }
