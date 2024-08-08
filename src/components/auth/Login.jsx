@@ -41,55 +41,59 @@ export const Login = () => {
 
 
     return (
-        <section className="section">
-            <div className="columns is-centered">
-                <div className="column is-4">
-                    <form onSubmit={handleSubmit}>
-                        <div className="field">
-                            <label htmlFor="username">Nombre de usuario:</label>
-                            <div className="control has-icons-left">
-                                <input
-                                    className="input"
-                                    type="text"
-                                    id="username"
-                                    name="username"
-                                    defaultValue=""
-                                    onChange={handleChange}
-                                />
+        <section className="container">
+            <div className="row">
+                <div className="col-md-4"></div>
+                <div className="col-md-4">
+                    <div className="row mb-3">
+                        <form onSubmit={handleSubmit}>
+                            <div className="mb-3">
+                                <label className='form-label' htmlFor="username">Username</label>
+                                <div className="control has-icons-left">
+                                    <input
+                                        className="form-control"
+                                        type="text"
+                                        id="username"
+                                        name="username"
+                                        defaultValue=""
+                                        onChange={handleChange}
+                                    />
+                                </div>
                             </div>
-                        </div>
-                        <div className="field">
-                            <label htmlFor="password">Contraseña:</label>
-                            <div className="control has-icons-left">
-                                <input
-                                    className="input"
-                                    type="password"
-                                    id="password"
-                                    name="password"
-                                    defaultValue=""
-                                    onChange={handleChange}
-                                />
+                            <div className="mb-3">
+                                <label className='form-label' htmlFor="password">Password</label>
+                                <div className="control has-icons-left">
+                                    <input
+                                        className="form-control"
+                                        type="password"
+                                        id="password"
+                                        name="password"
+                                        defaultValue=""
+                                        onChange={handleChange}
+                                    />
+                                </div>
                             </div>
-                        </div>
-                        <div className="field">
-                            <div className="control">
-                                <button
-                                    type="submit"
-                                    className="button is-primary is-fullwidth"
-                                >
-                                    Enviar
-                                </button>
-                                {isLoading && triggerFetch && (
-                                    <p>Cargando...</p>
-                                )}
-                                {isError && <p>Error al cargar los datos.</p>}
-                                {data && (
-                                    <p>{`Token obtenido: ${data.token}`}</p>
-                                )}
+                            <div className="mb-3 text-center">
+                                <div className="control">
+                                    <button
+                                        type="submit"
+                                        className="btn btn-light"
+                                    >
+                                        Submit
+                                    </button>
+                                    {isLoading && triggerFetch && (
+                                        <p>Cargando...</p>
+                                    )}
+                                    {isError && <p>Error al cargar los datos.</p>}
+                                    {/* {data && (
+                                        <p>{`Token obtenido: ${data.token}`}</p>
+                                    )} */}
+                                </div>
                             </div>
-                        </div>
-                    </form>
+                        </form>
+                    </div>
                 </div>
+                <div className="col-md-4"></div>
             </div>
         </section>
     );
