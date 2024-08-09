@@ -41,7 +41,7 @@ export const ArtistForm = () => {
             });
           })
           .catch((error) => {
-            console.error('Error fetching song data:', error);
+            console.error('Error fetching artist data:', error);
           });
       }
     }, [idArtist, token]);
@@ -68,7 +68,7 @@ export const ArtistForm = () => {
       alert(idArtist ? 'Artista actualizado correctamente' : 'Artista agregado correctamente');
       navigate('/artists');
       // window.location.reload(); // Recargar la página después de la navegación
-  };
+    };
 
     // Función para volver a la pestaña anterior
     const handleBackClick = () => {

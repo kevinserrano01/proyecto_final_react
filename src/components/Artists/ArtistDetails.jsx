@@ -81,11 +81,11 @@ export const ArtistDetails = () => {
             <img src={ artist.image } alt="logo album" width={"500px"}/>
 
             <p>Songs</p>
-            {/* <ul>
+            <ul>
                 {artist.songs.map((song) => (
-                    <li>{song}</li>
+                    <li key={song}> {song} </li>
                 ))}
-            </ul> */}
+            </ul>
         </div>
     </div>
   )

@@ -45,7 +45,7 @@ export const SideBar = () => {
       </NavLink>
 
       <NavLink
-        to="/playlist"
+        to="/playlists"
         className={({ isActive, isPending, isTransitioning }) =>
           [
             isPending ? "pending" : "",

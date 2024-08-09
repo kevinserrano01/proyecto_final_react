@@ -171,7 +171,7 @@ export const Router = createBrowserRouter([
                 ]
             },
             {
-                path: "/Playlist",
+                path: "/Playlists",
                 children: [ // Explore/details [hijo de Explore]
                     {
                         index: true, // ruta raiz
