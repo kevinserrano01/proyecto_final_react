@@ -19,6 +19,7 @@ import { AlbumDetails } from "./components/Albums/AlbumDetails";
 import { ArtistDetails } from "./components/Artists/ArtistDetails";
 import { GenreDetails } from "./components/Genres/GenreDetails";
 import { ArtistForm } from "./components/Artists/ArtistForm";
+import { PlayListForm } from "./components/PlayLists/PlayListForm";
 
 
 export const Router = createBrowserRouter([
@@ -184,14 +185,14 @@ export const Router = createBrowserRouter([
                         path: ":idPlayList",
                         element: <PlayListDetails />,
                     },
-                    // {
-                    //     path: "new",
-                    //     element: <SongForm />,
-                    // },
-                    // {
-                    //     path: "edit/:id",
-                    //     element: <SongForm />,
-                    // },
+                    {
+                        path: "add-playlist",
+                        element: <PlayListForm />,
+                    },
+                    {
+                        path: "edit-playlist/:idPlaylist",
+                        element: <PlayListForm />,
+                    },
                     // {
                     //     path: "delete/:id",
                     //     element: <SongForm />,
