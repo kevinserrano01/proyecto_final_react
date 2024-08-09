@@ -186,10 +186,13 @@ export const SongForm = () => {
                 />
               </div>
             </div>
-            <button type="submit" className="btn btn-primary">
-                { idSong ? 'Update Song' : 'Add Song'}
-            </button>
-            {isError && <p>Error al guardar la canción</p>}
+            <div className="mb-3 text-center">
+              <button type="submit" className="btn btn-primary">
+                  { idSong ? 'Update Song' : 'Add Song'}
+              </button>
+              {isError && <p>Error al guardar la canción</p>}
+            </div>
+            
           </form>
         </div>
         <div className="col-md-4"></div>

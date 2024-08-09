@@ -1,11 +1,16 @@
 import { useParams, useNavigate } from 'react-router-dom';
 import { useEffect } from 'react';
 import useFetch from '../../hooks/useFetchHook';
+import { useAuth } from '../../contexts/AuthContext';
 import { usePage } from '../../contexts/PageContext';
+import { SlArrowLeft } from "react-icons/sl";
+import { IoClose } from "react-icons/io5";
+import { IoPencil } from "react-icons/io5";
 
 export const ArtistDetails = () => {
     const { page } = usePage();
     const navigate = useNavigate();
+    const { token } = useAuth("state");
     const { idArtist } = useParams(); // Renderizar de manera dinámica el id de cada artista
     const [ {data, isLoading, errors}, doFetch ] = useFetch(`https://sandbox.academiadevelopers.com/harmonyhub/artists/?page=${page}`, {});
 
@@ -25,27 +30,62 @@ export const ArtistDetails = () => {
         navigate(-1);
     };
 
+    const handleDeleteArtist = async () => {
+        const response = await fetch(`https://sandbox.academiadevelopers.com/harmonyhub/artists/${idArtist}`, {
+          method: 'DELETE',
+          headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Token ${token}`,
+          },
+        });
+    
+        if (response.ok) {
+          alert('Artista eliminado correctamente');
+          navigate('/artists');
+        } else {
+          alert('Error al eliminar artista');
+        }
+      }
+    
+      const handleEditArtist = () => {
+        navigate(`/artists/edit-artist/${idArtist}`);
+      };
+
   return (
     <div className='container'>
         <div className="row">
             <div className="col-md-4 mb-4">
             {/* boton para volver a la pestaña anterior */}
-            <button className="btn btn-light" onClick={handleBackClick}>back</button>
+            <button className="btn btn-light" onClick={handleBackClick}>
+                <SlArrowLeft /> Back
+            </button>
         </div>
         </div>
         <div className="row">
-            <h2> { artist.name }</h2>
-            <hr />
+            <div className="d-flex align-items-center">
+                <h1 className="flex-grow-1"> { artist.name } </h1>
+                <button type="button" className="btn btn-outline-warning ms-2" onClick={handleEditArtist}>
+                  <IoPencil /> Edit
+                </button>
+                <button type="button" className="btn btn-outline-danger ms-2" onClick={handleDeleteArtist}>
+                    <IoClose /> Delete
+                </button>
+            </div>
+        </div>
+
+        <hr />
+
+        <div className="row">
             <p> Biography: { artist.bio }</p>
             <p><a href={ artist.website } target='blank'> Website </a></p>
             <img src={ artist.image } alt="logo album" width={"500px"}/>
 
             <p>Songs</p>
-            <ul>
+            {/* <ul>
                 {artist.songs.map((song) => (
                     <li>{song}</li>
                 ))}
-            </ul>
+            </ul> */}
         </div>
     </div>
   )

@@ -18,6 +18,7 @@ import { Search } from "./components/Search/Search";
 import { AlbumDetails } from "./components/Albums/AlbumDetails";
 import { ArtistDetails } from "./components/Artists/ArtistDetails";
 import { GenreDetails } from "./components/Genres/GenreDetails";
+import { ArtistForm } from "./components/Artists/ArtistForm";
 
 
 export const Router = createBrowserRouter([
@@ -67,10 +68,10 @@ export const Router = createBrowserRouter([
                         path: "edit-song/:idSong",
                         element: <SongForm />,
                     },
-                    {
-                        path: "delete/:id",
-                        element: <SongForm />,
-                    }
+                    // {
+                    //     path: "delete/:id",
+                    //     element: <SongForm />,
+                    // }
                 ]
             },
             {
@@ -117,14 +118,14 @@ export const Router = createBrowserRouter([
                         path: ":idArtist",
                         element: <ArtistDetails />,
                     },
-                    // {
-                    //     path: "new",
-                    //     element: <SongForm />,
-                    // },
-                    // {
-                    //     path: "edit/:id",
-                    //     element: <SongForm />,
-                    // },
+                    {
+                        path: "add-artist",
+                        element: <ArtistForm />,
+                    },
+                    {
+                        path: "edit-artist/:idArtist",
+                        element: <ArtistForm />,
+                    },
                     // {
                     //     path: "delete/:id",
                     //     element: <SongForm />,
