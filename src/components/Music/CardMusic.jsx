@@ -1,7 +1,7 @@
 import { useNavigate } from 'react-router-dom'
 import './CardMusic.css'
 import { useParams } from 'react-router-dom'
-import { SlHeart } from "react-icons/sl";
+import convertSecondsToMinutes from '../../hooks/secondToMinute'
 
 export const CardMusic = ({ song }) => {
     const { idSong } = useParams(); // Renderizar de manera dinámica el id de cada cancion
@@ -21,7 +21,7 @@ export const CardMusic = ({ song }) => {
         }
             <div className="card-body">
                 <h5 className="card-title" onClick={() => navigate(`/explore/${song.id}`)}> { song.title } </h5>
-                <p className="card-text">{ song.owner }</p>
+                <p className="card-text"> {convertSecondsToMinutes(song.duration)} </p>
                 <button type="button" className="btn btn-outline-danger btn-lg" onClick={addFavorite}>
                     ♥️
                 </button>

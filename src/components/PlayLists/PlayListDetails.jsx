@@ -66,19 +66,19 @@ export const PlayListDetails = () => {
 
       <div className="row">
         <div className="d-flex align-items-center">
-              <h1 className="flex-grow-1"> { playlist.name } </h1>
-              <button type="button" className="btn btn-outline-warning ms-2" onClick={handleEditPlaylist}>
-                <IoPencil /> Edit
-              </button>
-              <button type="button" className="btn btn-outline-danger ms-2" onClick={handleDeletePlaylist}>
-                  <IoClose /> Delete
-              </button>
-          </div>
+          <h1 className="flex-grow-1"> { playlist.name } </h1>
+          <button type="button" className="btn btn-outline-warning ms-2" onClick={handleEditPlaylist}>
+            <IoPencil /> Edit
+          </button>
+          <button type="button" className="btn btn-outline-danger ms-2" onClick={handleDeletePlaylist}>
+              <IoClose /> Delete
+          </button>
+        </div>
       </div>
 
       <div className="row">
         <div className="col-md-6">
-            <p className="card-title"> { playlist.description } </p>
+            <p> { playlist.description } </p>
               <p> Author: { playlist.owner }</p>
               <p> Created: { playlist.created_at }</p>
         </div>

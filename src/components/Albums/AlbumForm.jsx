@@ -4,28 +4,28 @@ import { useAuth } from '../../contexts/AuthContext';
 import useFetch from '../../hooks/useFetchHook';
 import { SlArrowLeft } from "react-icons/sl";
 
-export const PlayListForm = () => {
-    const { idPlaylist } = useParams();
+export const AlbumForm = () => {
+    const { idAlbum } = useParams();
     const navigate = useNavigate();
     const { token } = useAuth("state");
-    const [isChecked, setIsChecked] = useState(false); // Estado para almacenar el valor del checkbox
 
     const [formData, setFormData] = useState({
-        name: '',
-        description: '',
-        public: isChecked,
+        title: '',
+        year: '',
+        artist: '',
+        cover: null,
     });
 
-    const [{ isError, isLoading }, doFetch] = useFetch(idPlaylist ? `https://sandbox.academiadevelopers.com/harmonyhub/playlists/${idPlaylist}/` : 'https://sandbox.academiadevelopers.com/harmonyhub/playlists/', {
-        method: idPlaylist ? 'PUT' : 'POST',
+    const [{ isError, isLoading }, doFetch] = useFetch(idAlbum ? `https://sandbox.academiadevelopers.com/harmonyhub/albums/${idAlbum}/` : 'https://sandbox.academiadevelopers.com/harmonyhub/albums/', {
+        method: idAlbum ? 'PUT' : 'POST',
         headers: {
             'Authorization': `Token ${token}`,
         },
     });
 
     useEffect(() => {
-        if (idPlaylist) {
-            fetch(`https://sandbox.academiadevelopers.com/harmonyhub/playlists/${idPlaylist}/`, {
+        if (idAlbum) {
+            fetch(`https://sandbox.academiadevelopers.com/harmonyhub/albums/${idAlbum}/`, {
                 headers: {
                     'Authorization': `Token ${token}`,
                   },
@@ -33,17 +33,17 @@ export const PlayListForm = () => {
                 .then((response) => response.json())
                 .then((data) => {
                     setFormData({
-                        name: data.name,
-                        description: data.description,
-                        public: data.public,
+                        title: data.title,
+                        year: data.year,
+                        artist: data.artist,
+                        cover: null,
                     });
-                    setIsChecked(data.public); // Sincronizar el estado del checkbox con los datos recibidos
                 })
                 .catch((error) => {
-                    console.error('Error fetching playlist data:', error);
+                    console.error('Error fetching albums data:', error);
                 });
         }
-    }, [idPlaylist, token]);
+    }, [idAlbum, token]);
 
     const handleChange = (e) => {
         const { name, value, files } = e.target;
@@ -53,16 +53,7 @@ export const PlayListForm = () => {
         }));
     };
 
-     // Manejador de eventos para cuando el checkbox cambie de valor
-    const handleSwitchChange = (event) => {
-        const isChecked = event.target.checked;
-        setIsChecked(isChecked);
-        setFormData((prevData) => ({
-            ...prevData,
-            public: isChecked,
-        }));
-    };
-
+    // Función para enviar los datos del formulario
     const handleSubmit = (e) => {
         e.preventDefault();
         const data = new FormData();
@@ -73,18 +64,20 @@ export const PlayListForm = () => {
         doFetch({
             body: data,
         });
-  
-        alert(idPlaylist ? 'Playlist actualizado correctamente' : 'Playlist agregada correctamente');
-        navigate('/playlists');
+
+        alert(idAlbum ? 'Album actualizado correctamente' : 'Album creado correctamente');
+        navigate('/albums');
     };
 
-    // Función para volver a la pestaña anterior
+    // funcion para volver a la pestaña anterior
     const handleBackClick = () => {
         navigate(-1);
-      };
+    };
+
 
   return (
     <section className="container mb-3">
+
       <div className="row">
         <div className="col-md-4 mb-3">
           {/* boton para volver a la pestaña anterior */}
@@ -93,59 +86,74 @@ export const PlayListForm = () => {
           </button>
         </div>
       </div>
+
       <div className="row">
         <div className="col-md-4"></div>
+
         <div className="col-md-4 mb-3">
           <form onSubmit={handleSubmit}>
             <div className="mb-3">
-              <label htmlFor="name" className='form-label'>Name</label>
+              <label htmlFor="title" className='form-label'>Title</label>
               <div className="control has-icons-left">
                 <input
                   className="form-control"
                   type="text"
-                  id="name"
-                  name="name"
-                  value={formData.name}
+                  id="title"
+                  name="title"
+                  value={formData.title}
                   onChange={handleChange}
                   required
                 />
               </div>
             </div>
             <div className="mb-3">
-              <label htmlFor="description" className='form-label'>Description</label>
+              <label htmlFor="year" className='form-label'>Year</label>
               <div className="control has-icons-left">
                 <input
                   className="form-control"
-                  type="text"
-                  id="description"
-                  name="description"
-                  value={formData.description}
+                  type='number'
+                  id="year"
+                  name="year"
+                  value={formData.year}
                   onChange={handleChange}
                 />
               </div>
             </div>
             <div className="mb-3">
-                <div className="form-check form-switch">
-                    <input
-                        className="form-check-input"
-                        type="checkbox"
-                        role="switch"
-                        id="public"
-                        checked={isChecked}
-                        onChange={handleSwitchChange}
-                    />
-                    <label className="form-check-label" htmlFor="public">Public</label>
+              <label htmlFor="artist" className='form-label'>Artist</label>
+              <div className="control has-icons-left">
+                <input
+                  className="form-control"
+                  type="number"
+                  id="artist"
+                  name="artist"
+                  value={formData.artist}
+                  onChange={handleChange}
+                />
                 </div>
+            </div>
+            <div className="mb-3">
+              <label htmlFor="cover" className='form-label'>Image</label>
+              <div className="control has-icons-left">
+                <input
+                  className="form-control"
+                  type="file"
+                  id="cover"
+                  name="cover"
+                  onChange={handleChange}
+                />
+              </div>
             </div>
             <div className="mb-3 text-center">
               <button type="submit" className="btn btn-primary">
-                  { idPlaylist ? 'Update Playlist' : 'Add Playlist'}
+                  { idAlbum ? 'Update Album' : 'Add Album'}
               </button>
-              {isError && <p>Error al guardar playlist</p>}
+              {isError && <p>Error al guardar album</p>}
             </div>
             
           </form>
         </div>
+
         <div className="col-md-4"></div>
       </div>
     </section>

@@ -20,6 +20,7 @@ import { ArtistDetails } from "./components/Artists/ArtistDetails";
 import { GenreDetails } from "./components/Genres/GenreDetails";
 import { ArtistForm } from "./components/Artists/ArtistForm";
 import { PlayListForm } from "./components/PlayLists/PlayListForm";
+import { AlbumForm } from "./components/Albums/AlbumForm";
 
 
 export const Router = createBrowserRouter([
@@ -69,10 +70,6 @@ export const Router = createBrowserRouter([
                         path: "edit-song/:idSong",
                         element: <SongForm />,
                     },
-                    // {
-                    //     path: "delete/:id",
-                    //     element: <SongForm />,
-                    // }
                 ]
             },
             {
@@ -90,18 +87,14 @@ export const Router = createBrowserRouter([
                         path: ":idAlbum",
                         element: <AlbumDetails />,
                     },
-                    // {
-                    //     path: "new",
-                    //     element: <SongForm />,
-                    // },
-                    // {
-                    //     path: "edit/:id",
-                    //     element: <SongForm />,
-                    // },
-                    // {
-                    //     path: "delete/:id",
-                    //     element: <SongForm />,
-                    // }
+                    {
+                        path: "add-album",
+                        element: <AlbumForm />,
+                    },
+                    {
+                        path: "edit-album/:idAlbum",
+                        element: <AlbumForm />,
+                    },
                 ]
             },
             {
@@ -127,10 +120,6 @@ export const Router = createBrowserRouter([
                         path: "edit-artist/:idArtist",
                         element: <ArtistForm />,
                     },
-                    // {
-                    //     path: "delete/:id",
-                    //     element: <SongForm />,
-                    // }
                 ]
             },
             {
@@ -164,10 +153,6 @@ export const Router = createBrowserRouter([
                     //     path: "edit/:id",
                     //     element: <SongForm />,
                     // },
-                    // {
-                    //     path: "delete/:id",
-                    //     element: <SongForm />,
-                    // }
                 ]
             },
             {
@@ -193,10 +178,6 @@ export const Router = createBrowserRouter([
                         path: "edit-playlist/:idPlaylist",
                         element: <PlayListForm />,
                     },
-                    // {
-                    //     path: "delete/:id",
-                    //     element: <SongForm />,
-                    // }
                 ]
             },
             {

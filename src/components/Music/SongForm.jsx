@@ -15,7 +15,7 @@ export const SongForm = () => {
         year: '',
         duration: '',
         song_file: null,
-        views: '',
+        view_count: '',
         cover: null,
     });
 
@@ -42,7 +42,7 @@ export const SongForm = () => {
                 year: data.year,
                 duration: data.duration,
                 song_file: null, // We don't set the file fields
-                views: data.view_count,
+                view_count: data.view_count,
                 cover: null, // We don't set the file fields
               });
             })
@@ -115,7 +115,7 @@ export const SongForm = () => {
               <div className="control has-icons-left">
                 <input
                   className="form-control"
-                  type="text"
+                  type="number"
                   id="owner"
                   name="owner"
                   value={formData.owner}
@@ -141,7 +141,7 @@ export const SongForm = () => {
               <div className="control has-icons-left">
                 <input
                   className="form-control"
-                  type="text"
+                  type="number"
                   id="duration"
                   name="duration"
                   value={formData.duration}
@@ -162,14 +162,14 @@ export const SongForm = () => {
               </div>
             </div>
             <div className="mb-3">
-              <label htmlFor="views" className='form-label'>Views</label>
+              <label htmlFor="view_count" className='form-label'>Views</label>
               <div className="control has-icons-left">
                 <input
                   className="form-control"
                   type="number"
-                  id="views"
-                  name="views"
-                  value={formData.views}
+                  id="view_count"
+                  name="view_count"
+                  value={formData.view_count}
                   onChange={handleChange}
                 />
               </div>

@@ -4,6 +4,7 @@ import useFetch from '../../hooks/useFetchHook';
 import './CardMusic.css';
 import { useAuth } from '../../contexts/AuthContext';
 import { usePage } from '../../contexts/PageContext';
+import convertSecondsToMinutes from '../../hooks/secondToMinute';
 
 export const SongDetails = () => {
   const { page } = usePage();
@@ -67,7 +68,7 @@ export const SongDetails = () => {
             <p className="card-text"> Author: { song.owner }</p>
             <p className="card-text"> Views: { song.view_count }</p>
             <p className="card-text">Year: { song.year }</p>
-            <p className="card-text"> Duration: { song.duration }</p>
+            <p className="card-text"> Duration: { convertSecondsToMinutes(song.duration) }</p>
             <p className="card-text">Uploaded: { song.updated_at }</p>
             <div className="audio-player">
                 <audio controls>
