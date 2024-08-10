@@ -67,12 +67,20 @@ export const PlayListDetails = () => {
       <div className="row">
         <div className="d-flex align-items-center">
           <h1 className="flex-grow-1"> { playlist.name } </h1>
-          <button type="button" className="btn btn-outline-warning ms-2" onClick={handleEditPlaylist}>
-            <IoPencil /> Edit
-          </button>
-          <button type="button" className="btn btn-outline-danger ms-2" onClick={handleDeletePlaylist}>
-              <IoClose /> Delete
-          </button>
+          {/* Si ni es el autor no puede editar ni eliminar esto */}
+          {playlist.owner !== 200? 
+              <span>Owner: { playlist.owner }</span>
+            :
+              <div>
+                <button type="button" className="btn btn-outline-warning ms-2" onClick={handleEditPlaylist}>
+                <IoPencil /> Edit
+                </button>
+                <button type="button" className="btn btn-outline-danger ms-2" onClick={handleDeletePlaylist}>
+                  <IoClose /> Delete
+                </button>
+              </div>
+            } 
+          
         </div>
       </div>
 

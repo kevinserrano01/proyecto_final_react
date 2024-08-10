@@ -64,12 +64,19 @@ export const AlbumDetails = () => {
       <div className="row">
         <div className="d-flex align-items-center">
           <h1 className="flex-grow-1"> { album.title } </h1>
-          <button type="button" className="btn btn-outline-warning ms-2" onClick={handleEditAlbum}>
-            <IoPencil /> Edit
-          </button>
-          <button type="button" className="btn btn-outline-danger ms-2" onClick={handleDeleteAlbum}>
-            <IoClose /> Delete
-          </button>
+          { album.owner !== 200 ?
+            <p>Owner: { album.owner }</p>
+          :
+            <div>
+              <button type="button" className="btn btn-outline-warning ms-2" onClick={handleEditAlbum}>
+                <IoPencil /> Edit
+              </button>
+              <button type="button" className="btn btn-outline-danger ms-2" onClick={handleDeleteAlbum}>
+                <IoClose /> Delete
+              </button>
+            </div>
+          }
+          
         </div>
       </div>
 

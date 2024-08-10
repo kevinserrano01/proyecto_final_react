@@ -72,11 +72,17 @@ export const SongDetails = () => {
             <p className="card-text">Uploaded: { song.updated_at }</p>
             <div className="audio-player">
                 <audio controls>
-                      <source src={song.song_file} type="audio/mpeg" /> Tu navegador no soporta el elemento de audio.
-                  </audio>
+                    <source src={song.song_file} type="audio/mpeg" /> Tu navegador no soporta el elemento de audio.
+                </audio>
+            </div>
+            {song.owner !== 200 ? 
+              <span></span>
+              :
+              <div>
+                <button type="button" className="btn btn-warning m-2" onClick={editSong}>Edit</button>
+                <button type="button" className="btn btn-danger" onClick={deleteSong}>Delete</button>
               </div>
-              <button type="button" className="btn btn-warning m-2" onClick={editSong}>Edit</button>
-              <button type="button" className="btn btn-danger" onClick={deleteSong}>Delete</button>
+            }
           </div>
         </div>
     </div>

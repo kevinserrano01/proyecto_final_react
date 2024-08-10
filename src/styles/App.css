@@ -1,7 +1,17 @@
-body {
-    background-color: #121212;
-    color: #fff;
+html, body {
+    height: 100%;
+    padding: 0;
+    margin: 0;
+    color: white;
+    background: radial-gradient(200% 50% at 60% 5%, #5b00db 20%, #000 100%);
+    background-attachment: fixed;
 }
+
+body {
+    display: flex;
+    flex-direction: column;
+}
+
 
 .navbar {
     background-color: #5b00db;

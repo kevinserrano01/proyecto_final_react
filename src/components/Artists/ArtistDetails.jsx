@@ -64,12 +64,19 @@ export const ArtistDetails = () => {
         <div className="row">
             <div className="d-flex align-items-center">
                 <h1 className="flex-grow-1"> { artist.name } </h1>
-                <button type="button" className="btn btn-outline-warning ms-2" onClick={handleEditArtist}>
-                  <IoPencil /> Edit
-                </button>
-                <button type="button" className="btn btn-outline-danger ms-2" onClick={handleDeleteArtist}>
-                    <IoClose /> Delete
-                </button>
+                { artist.owner !== 200 ?
+                    <span>Owner: { artist.owner }</span>
+                  :
+                    <div>
+                      <button type="button" className="btn btn-outline-warning ms-2" onClick={handleEditArtist}>
+                        <IoPencil /> Edit
+                      </button>
+                      <button type="button" className="btn btn-outline-danger ms-2" onClick={handleDeleteArtist}>
+                        <IoClose /> Delete
+                      </button>
+                    </div>
+                }
+                
             </div>
         </div>
 
@@ -78,7 +85,11 @@ export const ArtistDetails = () => {
         <div className="row">
             <p> Biography: { artist.bio }</p>
             <p><a href={ artist.website } target='blank'> Website </a></p>
-            <img src={ artist.image } alt="logo album" width={"500px"}/>
+            { artist.image ?
+              <img src={ artist.image } alt="logo album" width={"500px"}/>
+            : 
+              <img src="/assets/logoArtist.jpg" alt="logo Artist" width={"500px"}/>
+            }
 
             <p>Songs</p>
             <ul>
