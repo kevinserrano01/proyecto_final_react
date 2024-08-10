@@ -21,6 +21,7 @@ import { GenreDetails } from "./components/Genres/GenreDetails";
 import { ArtistForm } from "./components/Artists/ArtistForm";
 import { PlayListForm } from "./components/PlayLists/PlayListForm";
 import { AlbumForm } from "./components/Albums/AlbumForm";
+import { GenreForm } from "./components/Genres/GenreForm";
 
 
 export const Router = createBrowserRouter([
@@ -145,14 +146,14 @@ export const Router = createBrowserRouter([
                         path: ":idGenre",
                         element: <GenreDetails />,
                     },
-                    // {
-                    //     path: "new",
-                    //     element: <SongForm />,
-                    // },
-                    // {
-                    //     path: "edit/:id",
-                    //     element: <SongForm />,
-                    // },
+                    {
+                        path: "add-genre",
+                        element: <GenreForm />,
+                    },
+                    {
+                        path: "edit-genre/:idGenre",
+                        element: <GenreForm />,
+                    },
                 ]
             },
             {
