@@ -21,9 +21,10 @@ export const CardMusic = ({ song, isFavorite }) => {
     // ruta absoluta: navigate(`/explore/${song.id}`)
     return (
         <div className="card" >  
-        {song.song_file ? 
-        <img src={song.cover} className="card-img-top" alt="logo music" /> :
-        <img src="/assets/musicLogo.jpg" className="card-img-top" alt="logo music" />
+        {song.cover ? 
+            <img src={song.cover} className="card-img-top" alt="logo music" />
+        :
+            <img src="/assets/musicLogo.jpg" className="card-img-top" alt="logo music" />
         }
             <div className="card-body">
                 <h5 className="card-title" onClick={() => navigate(`/explore/${song.id}`)}> { song.title } </h5>

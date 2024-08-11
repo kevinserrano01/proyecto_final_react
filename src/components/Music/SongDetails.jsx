@@ -5,6 +5,7 @@ import './CardMusic.css';
 import { useAuth } from '../../contexts/AuthContext';
 import { usePage } from '../../contexts/PageContext';
 import convertSecondsToMinutes from '../../hooks/secondToMinute';
+import { toast } from 'react-toastify';
 
 export const SongDetails = () => {
   const { page } = usePage();
@@ -38,10 +39,10 @@ export const SongDetails = () => {
     });
 
     if (response.ok) {
-      alert('Cancion eliminada correctamente');
+      toast.success('Cancion eliminada correctamente');
       navigate('/explore');
     } else {
-      alert('Error al eliminar la cancion');
+      toast.error('Error al eliminar la cancion');
     }
   }
 

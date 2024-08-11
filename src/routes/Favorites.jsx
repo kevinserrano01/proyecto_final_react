@@ -1,6 +1,7 @@
 import React, { useContext } from 'react'
 import { FavoritesContext } from '../contexts/FavoritesContext'
 import { CardMusic } from '../components/Music/CardMusic'
+import { CardMusicV2 } from '../components/Music/CardMusicV2'
 
 export const Favorites = () => {
   const { favorites } = useContext(FavoritesContext);
@@ -20,7 +21,7 @@ export const Favorites = () => {
             favorites.map(song => {
               return (
                 <div key={song.id} className="col-md-4 mb-3">
-                  <CardMusic song={song} isFavorite={true} />
+                  <CardMusicV2 song={song} isFavorite={true} />
                 </div>
               )
             })

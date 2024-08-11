@@ -6,6 +6,8 @@ import { SideBar } from './components/Layout/SideBar'
 import './components/Layout/MainContent.css'
 import './components/Layout/SideBar.css'
 import { AuthProvider } from './contexts/AuthContext'
+import { ToastContainer } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css';
 
 
 export const Layout = () => {
@@ -17,6 +19,19 @@ export const Layout = () => {
             <SideBar />
             <div className="main-content">
               <Outlet /> {/* Es reemplazado por el componente hijo */}
+              {/* NOTIFICACIONES */}
+              <ToastContainer 
+                position="top-right"
+                autoClose={5000}
+                hideProgressBar={false}
+                newestOnTop={false}
+                closeOnClick
+                rtl={false}
+                pauseOnFocusLoss
+                draggable
+                pauseOnHover
+                theme="colored"
+              />
             </div>
           </div>
         </div>
