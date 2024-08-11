@@ -22,14 +22,14 @@ export const Music = () => {
   };
 
   return (
-    <> 
+    <div> 
       <div className="container">
         <div className="d-flex align-items-center">
           <h1 className="flex-grow-1"> Songs </h1>
           <button type="button" className="btn btn-light ms-auto" onClick={handleAddSongClick}>
             <CgMathPlus /> Add
           </button>
-      </div>
+        </div>
       </div>
       
       <hr />
@@ -48,11 +48,16 @@ export const Music = () => {
           }
           </div>
           <div className="row">
-            <button className="btn btn-warning" onClick={() => handlePageChange(page - 1)} disabled={page <= 1}>Previous</button>
-            <button className="btn btn-success" onClick={() => handlePageChange(page + 1)} disabled={page >= 25}>Next</button>
+            <div className="col-md-4"></div>
+            <div className="col-md-4 text-center">
+              <button className="btn btn-outline-light" onClick={() => handlePageChange(page - 1)} disabled={page <= 1}>Previous</button>
+              <button className="btn btn-outline-light ms-3" onClick={() => handlePageChange(page + 1)} disabled={page >= 25}>Next</button>
+            </div>
+            <div className="col-md-4"></div>
+            
           </div>
       </div>
       
-    </>
+    </div>
   )
 }
