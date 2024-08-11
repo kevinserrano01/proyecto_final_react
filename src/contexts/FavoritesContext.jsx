@@ -1,9 +1,18 @@
-import React, { createContext, useState } from 'react';
+import React, { createContext, useState, useEffect } from 'react';
 
 export const FavoritesContext = createContext();
 
 export const FavoritesProvider = ({ children }) => {
-    const [favorites, setFavorites] = useState([]);
+    const [favorites, setFavorites] = useState(() => {
+        // Cargar favoritos desde localStorage al inicializarse
+        const savedFavorites = localStorage.getItem('favorites');
+        return savedFavorites ? JSON.parse(savedFavorites) : [];
+    });
+
+    useEffect(() => {
+        // Guardar favoritos en localStorage cada vez que se actualicen
+        localStorage.setItem('favorites', JSON.stringify(favorites));
+    }, [favorites]);
 
     // Funcion para agregar una cancion a favoritos
     const addFavorite = (song) => {
