@@ -20,7 +20,7 @@ export const Favorites = () => {
             favorites.map(song => {
               return (
                 <div key={song.id} className="col-md-4 mb-3">
-                  <CardMusic song={song} />
+                  <CardMusic song={song} isFavorite={true} />
                 </div>
               )
             })
