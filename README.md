@@ -91,7 +91,12 @@ Variebale de entorno:
     3. Para reproducir una canción, utiliza el reproductor de audio en la tarjeta de la canción.
 
 ### **Capturas de pantalla**
----
+![Captura de pantalla](./preview/Search.png)
+![Captura de pantalla](./preview/Favorites.png)
+![Captura de pantalla](./preview/Artist.png)
+![Captura de pantalla](./preview/Albums.png)
+![Captura de pantalla](./preview/Add_playlist.png)
+![Captura de pantalla](./preview/FavTablet.png)
 
 
 ### **Flujos de trabajo:**
